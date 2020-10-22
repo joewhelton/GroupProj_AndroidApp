@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "949281454563",
+    "firebase_url": "https://finaiapp.firebaseio.com",
+    "project_id": "finaiapp",
+    "storage_bucket": "finaiapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949281454563:android:3bea0d1a480ee781fe48d6",
+        "android_client_info": {
+          "package_name": "com.example.finaiapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "949281454563-d5gge52a84unl2qedpj2ks1utp9cmgq3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.finaiapp",
+            "certificate_hash": "2b4c2330a33430b5432ceb5ab0b8b97faea46ed2"
+          }
+        },
+        {
+          "client_id": "949281454563-809mk7p14t10du6eo2eqcffhonjbbeop.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBa2iF8ptqw-VC34fISYOABZFmBiSuzAec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "949281454563-809mk7p14t10du6eo2eqcffhonjbbeop.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

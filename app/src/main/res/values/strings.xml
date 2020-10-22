@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FinAIApp</string>
+    <string name="invalid_firstName">Please enter a valid name</string>
+    <string name="invalid_surname">Please enter a valid surname</string>
+    <string name="invalid_email">Please enter a valid email</string>
+    <string name="invalid_password">Must be at least 8 characters long including a digit, uppercase letter, lowercase letter and special character</string>
+    <string name="invalid_confirm_password">Password does not match</string>
+</resources>
