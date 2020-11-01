@@ -59,7 +59,7 @@ public class LoginActivityFirebaseUi extends AppCompatActivity {
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()
 //                        .setTheme(R.style.CustomTheme)
-//                        .setLogo(R.drawable.logo_vertical)
+                        .setLogo(R.drawable.logo)
                         .setAvailableProviders(providers)
                         .setIsSmartLockEnabled(false)
                         .build(),
