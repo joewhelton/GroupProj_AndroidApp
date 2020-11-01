@@ -23,7 +23,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivityOrig extends AppCompatActivity implements View.OnClickListener {
 
     private Button buttonLogin;
     private EditText editTextEmail;
@@ -109,7 +109,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                      else {
                         //display some message here
-                        Toast.makeText(LoginActivity.this, "Login details are incorrect", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivityOrig.this, "Login details are incorrect", Toast.LENGTH_LONG).show();
 
                     }
                     }
@@ -141,12 +141,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     firebaseAuth.sendPasswordResetEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Toast.makeText(LoginActivity.this, "Reset link sent to your password", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivityOrig.this, "Reset link sent to your password", Toast.LENGTH_LONG).show();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(LoginActivity.this, "Error - reset email was not sent" + e.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivityOrig.this, "Error - reset email was not sent" + e.getMessage(), Toast.LENGTH_LONG).show();
 
 
                         }

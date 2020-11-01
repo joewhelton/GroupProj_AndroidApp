@@ -15,7 +15,8 @@
         <activity android:name=".ForgottenPasswordActivity" />
         <activity android:name=".Register1Activity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivityOrig" />
+        <activity android:name=".LoginActivityFirebaseUi" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

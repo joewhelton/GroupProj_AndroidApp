@@ -15,9 +15,6 @@ import android.widget.Toast;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
-import com.firebase.ui.auth.AuthUI;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -25,8 +22,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Pattern;
 
 public class Register2Activity extends AppCompatActivity implements View.OnClickListener {
@@ -127,7 +122,7 @@ public class Register2Activity extends AppCompatActivity implements View.OnClick
 
         if(view == viewLogin){
             //open login activity when user clicks on the already registered textview
-            startActivity(new Intent(this, LoginActivity.class));
+            startActivity(new Intent(this, LoginActivityOrig.class));
         }
 
 

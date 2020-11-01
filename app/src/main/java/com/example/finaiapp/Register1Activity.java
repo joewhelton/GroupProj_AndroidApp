@@ -1,6 +1,5 @@
 package com.example.finaiapp;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
@@ -74,7 +72,7 @@ public class Register1Activity extends AppCompatActivity implements View.OnClick
 
         if(view == viewLogin){
             //open login activity when user clicks on the already registered textview
-            startActivity(new Intent(this, LoginActivity.class));
+            startActivity(new Intent(this, LoginActivityFirebaseUi.class));
         }
 
 
