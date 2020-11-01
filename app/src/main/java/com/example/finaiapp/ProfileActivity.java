@@ -1,5 +1,6 @@
 package com.example.finaiapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,6 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -52,11 +58,26 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         //if logout is pressed
         if(view == buttonLogout){
             //logging out the user
+            // Firebase sign out
             firebaseAuth.signOut();
-            //closing activity
-            finish();
-            //starting login activity
+
+            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken(getString(R.string.default_web_client_id))
+                    .requestEmail()
+                    .build();
+
+            // Build a GoogleSignInClient with the options specified by gso.
+            GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+            // Google sign out
+            mGoogleSignInClient.signOut().addOnCompleteListener(this,
+                    new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+//                            updateUI(null);
+                        }
+                    });
+        }
             startActivity(new Intent(this, LoginActivity.class));
         }
     }
-}
