@@ -1,25 +1,16 @@
 package com.example.finaiapp;
 
-public class Client {
-    private String memberID;
+public class User {
     private String firstName;
     private String surname;
-
+    private String userRole;
     private String email;
 
-    public Client(String firstName, String surname, String email){
-        //this.memberID = memberID;
-        this.firstName = firstName;
-        this.surname = surname;
-        this.email = email;
-    }
-
-    public String getMemberID() {
-        return memberID;
-    }
-
-    public void setMemberID(String memberID) {
-        this.memberID = memberID;
+    public User(String firstName, String surname, String email){
+        setFirstName(firstName);
+        setSurname(surname);
+        setEmail(email);
+        setUserRole("client");
     }
 
     public String getFirstName() {
@@ -43,5 +34,12 @@ public class Client {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    public String getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
     }
 }

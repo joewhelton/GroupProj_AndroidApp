@@ -24,10 +24,7 @@ public class Register1Activity extends AppCompatActivity implements View.OnClick
     private TextView viewLogin;
     private AwesomeValidation awesomeValidation;
     private ProgressDialog progressDialog;
-    private static final Pattern PASSWORD_PATTERN = Pattern.compile("^" + "(?=.*[0-9])" +
-            "(?=.*[a-z])" + "(?=.*[A-Z])" + "(?=.*[a-zA-Z])" + "(?=.*[!@#$%^&+=])" + "(?=\\S+$)" +
-            ".{8,}" +"$");
-    private static final Pattern NAME_PATTERN = Pattern.compile("^[A-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$");
+    private static final Pattern NAME_PATTERN = Pattern.compile("[A-Z]{1,}[A-Za-z']+[^\\\\\\d~`?!^*¨ˆ;@=$%{}\\[\\]|/<>#“.,]*$");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

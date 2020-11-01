@@ -15,24 +15,18 @@ import android.widget.Toast;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
-import com.firebase.ui.auth.AuthUI;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Pattern;
 
 public class Register2Activity extends AppCompatActivity implements View.OnClickListener {
     private Button buttonRegister;
     private EditText editTextEmail, editTextPassword, editTextConfirmPassword;
-    private TextView viewLogin;
+    private TextView viewLogin,textCreateAccount, privacyPolicy;
     private AwesomeValidation awesomeValidation;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
@@ -41,7 +35,6 @@ public class Register2Activity extends AppCompatActivity implements View.OnClick
     private static final Pattern PASSWORD_PATTERN = Pattern.compile("^" + "(?=.*[0-9])" +
             "(?=.*[a-z])" + "(?=.*[A-Z])" + "(?=.*[a-zA-Z])" + "(?=.*[!@#$%^&+=])" + "(?=\\S+$)" +
             ".{8,}" +"$");
-    private static final Pattern NAME_PATTERN = Pattern.compile("^[A-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$");
 
 
     @Override
@@ -50,7 +43,7 @@ public class Register2Activity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_register2);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUtil.openFbReference("clients");
+        FirebaseUtil.openFbReference("users");
         mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
         mDatabaseReference = FirebaseUtil.mDatabaseReference;
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
@@ -65,9 +58,15 @@ public class Register2Activity extends AppCompatActivity implements View.OnClick
         editTextConfirmPassword = (EditText) findViewById(R.id.editTextConfirmPassword);
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
         viewLogin = (TextView) findViewById(R.id.viewLogin);
+        textCreateAccount = (TextView) findViewById(R.id.textCreateAccount);
+        privacyPolicy = (TextView) findViewById(R.id.privacyPolicy);
+        String firstname = getIntent().getStringExtra("name");
+        String surname = getIntent().getStringExtra("surname");
+        textCreateAccount.setText("Create Account - Step 2 for " + firstname + " " + surname);
         progressDialog = new ProgressDialog (this);
         buttonRegister.setOnClickListener(this);
         viewLogin.setOnClickListener(this);
+        privacyPolicy.setOnClickListener(this);
         addValidationToViews();
 
     }
@@ -86,7 +85,6 @@ public class Register2Activity extends AppCompatActivity implements View.OnClick
             final String firstname = getIntent().getStringExtra("name");
             final String surname = getIntent().getStringExtra("surname");
             final String email = editTextEmail.getText().toString().trim();
-            System.out.println(firstname);
             String password = editTextPassword.getText().toString().trim();
             progressDialog.setMessage("Registering user...");
             progressDialog.show();
@@ -96,8 +94,8 @@ public class Register2Activity extends AppCompatActivity implements View.OnClick
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 //create client and pass details to Firebase
-                                Client client = new Client(firstname, surname, email);
-                                mDatabaseReference.child(firebaseAuth.getCurrentUser().getUid()).setValue(client).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                User user = new User(firstname, surname, email);
+                                mDatabaseReference.child(firebaseAuth.getCurrentUser().getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         Toast.makeText(Register2Activity.this, "Account created", Toast.LENGTH_LONG).show();
@@ -123,11 +121,14 @@ public class Register2Activity extends AppCompatActivity implements View.OnClick
         if(view == buttonRegister)
             registerUser();
 
-
-
         if(view == viewLogin){
             //open login activity when user clicks on the already registered textview
             startActivity(new Intent(this, LoginActivity.class));
+        }
+
+        if(view == privacyPolicy){
+            //open privacy policy when user clicks privacy policy
+            startActivity(new Intent(this, PrivacyPolicyActivity.class));
         }
 
 
