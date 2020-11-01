@@ -52,7 +52,7 @@ public class LoginActivityFirebaseUi extends AppCompatActivity {
 //                new AuthUI.IdpConfig.TwitterBuilder().build());
 
                 new AuthUI.IdpConfig.GoogleBuilder().build(),
-                new AuthUI.IdpConfig.EmailBuilder().build());
+                new AuthUI.IdpConfig.EmailBuilder().setAllowNewAccounts(false).build());
 
         // Create and launch sign-in intent
         startActivityForResult(
