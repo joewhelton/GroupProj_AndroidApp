@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PersonalInfo">
+
+    <TextView
+        android:id="@+id/textview_personal_title"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Personal Info"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+
+        android:layout_marginRight="8dp"
+        android:shrinkColumns="1"
+        android:stretchColumns="*"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_personal_title">
+
+        <TableRow
+            android:id="@+id/tableRow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textview_personal_firstLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="First" />
+
+            <EditText
+                android:id="@+id/edittext_personal_first"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="First Name"
+
+                android:inputType="textPersonName"
+                android:text="James" />
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textview_personal_surnamelabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Surname" />
+
+            <EditText
+                android:id="@+id/edittext_personal_surname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Surname"
+                android:inputType="textPersonName"
+                android:text="Joyce" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textview_personal_emaillabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="email" />
+
+            <EditText
+                android:id="@+id/edittext_personal_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="user@domain.com"
+                android:inputType="textPersonName"
+                android:text="james@email.com" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textview_personal_address1label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address 1" />
+
+            <EditText
+                android:id="@+id/edittext_personal_address1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Address 1"
+                android:inputType="textPersonName"
+                android:text="31 Wallaby Way" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textview_personal_address2label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address 2" />
+
+            <EditText
+                android:id="@+id/edittext_personal_address2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Address 2"
+                android:inputType="textPersonName"
+                android:text="Upper East Village" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textview_personal_citylabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="City" />
+
+            <EditText
+                android:id="@+id/edittext_personal_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="City"
+                android:inputType="textPersonName"
+                android:text="Seattle" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textview_personal_statelabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="State" />
+
+            <EditText
+                android:id="@+id/edittext_personal_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="State"
+                android:inputType="textPersonName"
+                android:text="Washington" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textview_personal_mobilelabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mobile" />
+
+            <EditText
+                android:id="@+id/edittext_personal_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="555 555 5555"
+                android:inputType="textPersonName"
+                android:text="519 555 1212" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textview_personal_doblabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date of Birth" />
+
+
+            <EditText
+                android:id="@+id/edittext_personal_dob"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:hint="MM/DD/YYYY"
+                android:inputType="date" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textview_personal_maritallabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Marital Status" />
+
+
+            <EditText
+                android:id="@+id/edittext_personal_marital"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Not Specified" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textview_personal_dependentslabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dependents" />
+
+
+            <EditText
+                android:id="@+id/edittext_personal_dependents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="3" />
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/button_personal_save"
+        android:layout_width="148dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_corners_button"
+        android:text="SAVE"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
