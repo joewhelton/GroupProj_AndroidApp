@@ -21,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
     private Button buttonLogout;
+    private Button buttonPersonal;
     private TextView textViewUserEmail;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
@@ -54,6 +55,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         //initializing views
         textViewUserEmail = (TextView) findViewById(R.id.textViewUserEmail);
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
+        buttonPersonal = (Button) findViewById(R.id.buttonPersonal);
         mDatabaseReference = mDatabaseReference.child(firebaseAuth.getCurrentUser().getUid());
         mDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -71,6 +73,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         //adding listener to button
         buttonLogout.setOnClickListener(this);
+        buttonPersonal.setOnClickListener(this);
     }
 
     @Override
@@ -84,5 +87,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             //starting login activity
             startActivity(new Intent(this, LoginActivity.class));
         }
+
+        if(view == buttonPersonal) {
+            // move to personal info
+            startActivity(new Intent(this, PersonalInfo.class));
+        }
+
     }
 }

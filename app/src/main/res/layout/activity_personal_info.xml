@@ -26,7 +26,7 @@
 
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
 
         android:layout_marginRight="8dp"
@@ -52,10 +52,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:focusable="false"
+                android:inputType="none"
+                android:enabled="false"
                 android:hint="First Name"
-
-                android:inputType="textPersonName"
-                android:text="James" />
+                android:text="first" />
         </TableRow>
 
 
@@ -73,9 +74,11 @@
                 android:id="@+id/edittext_personal_surname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:focusable="false"
+                android:inputType="none"
+                android:enabled="false"
                 android:hint="Surname"
-                android:inputType="textPersonName"
-                android:text="Joyce" />
+                android:text="last" />
         </TableRow>
 
         <TableRow
@@ -93,8 +96,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="user@domain.com"
-                android:inputType="textPersonName"
-                android:text="james@email.com" />
+                android:focusable="false"
+                android:inputType="none"
+                android:enabled="false"
+                android:text="email" />
         </TableRow>
 
         <TableRow
@@ -113,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Address 1"
                 android:inputType="textPersonName"
-                android:text="31 Wallaby Way" />
+                android:text="address1" />
         </TableRow>
 
         <TableRow
@@ -132,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Address 2"
                 android:inputType="textPersonName"
-                android:text="Upper East Village" />
+                android:text="address2" />
         </TableRow>
 
         <TableRow
@@ -152,7 +157,7 @@
                 android:ems="10"
                 android:hint="City"
                 android:inputType="textPersonName"
-                android:text="Seattle" />
+                android:text="city" />
         </TableRow>
 
         <TableRow
@@ -172,7 +177,7 @@
                 android:ems="10"
                 android:hint="State"
                 android:inputType="textPersonName"
-                android:text="Washington" />
+                android:text="state" />
         </TableRow>
 
         <TableRow
@@ -192,7 +197,7 @@
                 android:ems="10"
                 android:hint="555 555 5555"
                 android:inputType="textPersonName"
-                android:text="519 555 1212" />
+                android:text="555 555 1212" />
         </TableRow>
 
         <TableRow
@@ -231,8 +236,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Not Specified" />
+                android:inputType="textPersonName" />
         </TableRow>
 
         <TableRow
@@ -251,8 +255,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="3" />
+                android:inputType="textPersonName" />
         </TableRow>
     </TableLayout>
 
@@ -260,7 +263,7 @@
         android:id="@+id/button_personal_save"
         android:layout_width="148dp"
         android:layout_height="29dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/rounded_corners_button"
         android:text="SAVE"
         android:textColor="@color/common_google_signin_btn_text_dark_default"

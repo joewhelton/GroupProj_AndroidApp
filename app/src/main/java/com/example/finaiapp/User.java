@@ -6,6 +6,10 @@ public class User {
     private String userRole;
     private String email;
 
+    // empty constructor
+    public User() {
+    }
+
     public User(String firstName, String surname, String email){
         setFirstName(firstName);
         setSurname(surname);
