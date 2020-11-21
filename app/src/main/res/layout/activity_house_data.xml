@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1500dp">
+
+
+        <EditText
+            android:id="@+id/saleMonth"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="171dp"
+            android:layout_marginLeft="168dp"
+            android:layout_marginTop="138dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/saleDay"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="169dp"
+            android:layout_marginLeft="168dp"
+            android:layout_marginTop="197dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/saleYr"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="168dp"
+            android:layout_marginLeft="168dp"
+            android:layout_marginTop="80dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/tvSaleYear"
+            android:layout_width="122dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="100dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Year of sale" />
+
+        <TextView
+            android:id="@+id/tvSaleMonth"
+            android:layout_width="122dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="160dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Month of sale" />
+
+        <TextView
+            android:id="@+id/tvSaleDay"
+            android:layout_width="122dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="220dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Day of sale" />
+
+        <EditText
+            android:id="@+id/yrRenovated"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="171dp"
+            android:layout_marginLeft="171dp"
+            android:layout_marginTop="980dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/yrBuilt"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="170dp"
+            android:layout_marginLeft="168dp"
+            android:layout_marginTop="919dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/tvYrRenovated"
+            android:layout_width="121dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="1000dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Year renovated" />
+
+        <TextView
+            android:id="@+id/tvYrBuilt"
+            android:layout_width="121dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="940dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Year Built" />
+
+        <Spinner
+            android:id="@+id/spinnerGrade"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="175dp"
+            android:layout_marginLeft="175dp"
+            android:layout_marginTop="761dp"
+            android:entries="@array/spinner_grade" />
+
+        <TextView
+            android:id="@+id/textGrade"
+            android:layout_width="116dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="21dp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginTop="762dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Grade" />
+
+        <Spinner
+            android:id="@+id/spinnerCondition"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="178dp"
+            android:layout_marginLeft="178dp"
+            android:layout_marginTop="693dp"
+            android:entries="@array/spinner_condition" />
+
+        <TextView
+            android:id="@+id/textCondition"
+            android:layout_width="116dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="700dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Condition" />
+
+        <Spinner
+            android:id="@+id/spinnerView"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="175dp"
+            android:layout_marginLeft="175dp"
+            android:layout_marginTop="636dp"
+            android:entries="@array/spinner_view" />
+
+        <TextView
+            android:id="@+id/textViews"
+            android:layout_width="116dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="21dp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginTop="638dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="View" />
+
+        <TextView
+            android:id="@+id/textWaterfront"
+            android:layout_width="116dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="580dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Waterfront" />
+
+
+        <Button
+            android:id="@+id/buttonViewReport"
+            android:layout_width="234dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="21dp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginTop="1250dp"
+            android:layout_marginBottom="84dp"
+            android:background="@drawable/rounded_corners_button"
+            android:text="View House Price Report"
+            android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+        <EditText
+            android:id="@+id/sqFtLot15"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="169dp"
+            android:layout_marginLeft="168dp"
+            android:layout_marginTop="1284dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/sqFtLiving15"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="172dp"
+            android:layout_marginLeft="168dp"
+            android:layout_marginTop="1219dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/longtitude"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="172dp"
+            android:layout_marginLeft="168dp"
+            android:layout_marginTop="1159dp"
+            android:ems="10"
+            android:inputType="numberSigned|numberDecimal" />
+
+        <EditText
+            android:id="@+id/latitude"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="172dp"
+            android:layout_marginLeft="168dp"
+            android:layout_marginTop="1098dp"
+            android:ems="10"
+            android:inputType="numberSigned|numberDecimal" />
+
+        <EditText
+            android:id="@+id/zipcode"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="172dp"
+            android:layout_marginLeft="168dp"
+            android:layout_marginTop="1042dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/sqFtBasement"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="172dp"
+            android:layout_marginLeft="168dp"
+            android:layout_marginTop="862dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/noOfBedrooms"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="164dp"
+            android:layout_marginLeft="168dp"
+            android:layout_marginTop="259dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/sqFtLivingSpace"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="164dp"
+            android:layout_marginLeft="168dp"
+            android:layout_marginTop="385dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/tvSqFt_Lot15"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="1300dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="sq_ft lot 15" />
+
+        <TextView
+            android:id="@+id/tvSqFt_LivingLot15"
+            android:layout_width="131dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="11dp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginTop="1240dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="sq_ft living lot 15" />
+
+        <TextView
+            android:id="@+id/tvLongtitude"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="11dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="1180dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="longtitude" />
+
+        <TextView
+            android:id="@+id/tvLatitude"
+            android:layout_width="101dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="1120dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="latitude" />
+
+        <TextView
+            android:id="@+id/tvSqFt_basement"
+            android:layout_width="121dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="882dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="sq_ft basement" />
+
+        <TextView
+            android:id="@+id/tvSqFt_AboveGround"
+            android:layout_width="141dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="17dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="817dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="sq_ft above ground" />
+
+        <TextView
+            android:id="@+id/tvNoOfFloors"
+            android:layout_width="116dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="17dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="520dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="No of floors" />
+
+        <TextView
+            android:id="@+id/tvZipCode"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="1060dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="zipcode" />
+
+        <TextView
+            android:id="@+id/tvSqFt_LoftSpace"
+            android:layout_width="133dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="460dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="sq_ft loft space" />
+
+
+        <EditText
+            android:id="@+id/sqFtLoftSpace"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="167dp"
+            android:layout_marginLeft="168dp"
+            android:layout_marginTop="437dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/tvNoOfBedrooms"
+            android:layout_width="122dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="280dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="No of bedrooms" />
+
+        <TextView
+            android:id="@+id/tvNoOfBathrooms"
+            android:layout_width="124dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="343dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="No of bathrooms" />
+
+        <TextView
+            android:id="@+id/tvSqFt_LivingSpace"
+            android:layout_width="129dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="400dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="sq_ft living space" />
+
+        <TextView
+            android:id="@+id/tvSearchHousePrice"
+            android:layout_width="306dp"
+            android:layout_height="58dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="46dp"
+            android:text="View maximum house price"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/colorAccent" />
+
+        <EditText
+            android:id="@+id/noOfBathrooms"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="162dp"
+            android:layout_marginLeft="168dp"
+            android:layout_marginTop="320dp"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/noOfFloors"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="168dp"
+            android:layout_marginLeft="168dp"
+            android:layout_marginTop="494dp"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/sqFtAboveGround"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="175dp"
+            android:layout_marginLeft="168dp"
+            android:layout_marginTop="806dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <Spinner
+            android:id="@+id/spinnerWaterfront"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="175dp"
+            android:layout_marginLeft="175dp"
+            android:layout_marginTop="577dp"
+            android:entries="@array/spinner_waterfront" />
+
+    </RelativeLayout>
+
+</ScrollView>
