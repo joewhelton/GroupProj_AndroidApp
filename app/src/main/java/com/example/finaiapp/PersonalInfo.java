@@ -35,8 +35,15 @@ public class PersonalInfo extends AppCompatActivity {
     private TextView et_personal_state;
     private TextView et_personal_mobile;
     private TextView et_personal_dob;
+    private TextView et_personal_gender;
     private TextView et_personal_marital;
     private TextView et_personal_dependents;
+    private TextView et_personal_education;
+    private TextView et_personal_selfemployed;
+    private TextView et_personal_applicantincome;
+    private TextView et_personal_coapplicantincome;
+    private TextView et_personal_credithistory;
+
     private Button btn_personal_save;
 
     private FirebaseDatabase mFirebaseDatabase;
@@ -53,8 +60,14 @@ public class PersonalInfo extends AppCompatActivity {
     private String state;
     private String mobile;
     private String dob;
+    private String gender;
     private String marital;
     private String dependents;
+    private String education;
+    private String selfemployed;
+    private String applicantincome;
+    private String coapplicantincome;
+    private String credithistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,8 +90,15 @@ public class PersonalInfo extends AppCompatActivity {
         et_personal_state = findViewById(R.id.edittext_personal_state);
         et_personal_mobile = findViewById(R.id.edittext_personal_mobile);
         et_personal_dob = findViewById(R.id.edittext_personal_dob);
+        et_personal_gender = findViewById(R.id.edittext_personal_gender);
         et_personal_marital = findViewById(R.id.edittext_personal_marital);
         et_personal_dependents = findViewById(R.id.edittext_personal_dependents);
+        et_personal_education = findViewById(R.id.edittext_personal_education);
+        et_personal_selfemployed = findViewById(R.id.edittext_personal_selfemployed);
+        et_personal_applicantincome = findViewById(R.id.edittext_personal_applicantincome);
+        et_personal_coapplicantincome = findViewById(R.id.edittext_personal_coapplicantincome);
+        et_personal_credithistory = findViewById(R.id.edittext_personal_credithistory);
+
         btn_personal_save = findViewById(R.id.button_personal_save);
 
         //adding an onclicklistener to button
@@ -127,8 +147,14 @@ public class PersonalInfo extends AppCompatActivity {
                     state = snapshot.child("profile").child("state").getValue().toString();
                     mobile = snapshot.child("profile").child("mobile").getValue().toString();
                     dob = snapshot.child("profile").child("dob").getValue().toString();
+                    gender = snapshot.child("profile").child("gender").getValue().toString();
                     marital = snapshot.child("profile").child("marital").getValue().toString();
                     dependents = snapshot.child("profile").child("dependents").getValue().toString();
+                    education = snapshot.child("profile").child("education").getValue().toString();
+                    selfemployed = snapshot.child("profile").child("selfemployed").getValue().toString();
+                    applicantincome = snapshot.child("profile").child("applicantincome").getValue().toString();
+                    coapplicantincome = snapshot.child("profile").child("coapplicantincome").getValue().toString();
+                    credithistory = snapshot.child("profile").child("credithistory").getValue().toString();
 
                     et_personal_address1.setText(address1);
                     et_personal_address2.setText(address2);
@@ -136,8 +162,14 @@ public class PersonalInfo extends AppCompatActivity {
                     et_personal_state.setText(state);
                     et_personal_mobile.setText(mobile);
                     et_personal_dob.setText(dob);
+                    et_personal_gender.setText(gender);
                     et_personal_marital.setText(marital);
                     et_personal_dependents.setText(dependents);
+                    et_personal_education.setText(education);
+                    et_personal_selfemployed.setText(selfemployed);
+                    et_personal_applicantincome.setText(applicantincome);
+                    et_personal_coapplicantincome.setText(coapplicantincome);
+                    et_personal_credithistory.setText(credithistory);
                 }
             }
 
@@ -161,8 +193,14 @@ public class PersonalInfo extends AppCompatActivity {
         state = et_personal_state.getText().toString();
         mobile = et_personal_mobile.getText().toString();
         dob = et_personal_dob.getText().toString();
+        gender = et_personal_gender.getText().toString();
         marital = et_personal_marital.getText().toString();
         dependents = et_personal_dependents.getText().toString();
+        education = et_personal_education.getText().toString();
+        selfemployed = et_personal_selfemployed.getText().toString();
+        applicantincome = et_personal_applicantincome.getText().toString();
+        coapplicantincome = et_personal_coapplicantincome.getText().toString();
+        credithistory = et_personal_credithistory.getText().toString();
 
         //Writing Hashmap
         Map<String, Object> mHashmap = new HashMap<>();
@@ -174,10 +212,18 @@ public class PersonalInfo extends AppCompatActivity {
         mHashmap.put("profile/state", state );
         mHashmap.put("profile/mobile", mobile );
         mHashmap.put("profile/dob", dob );
+        mHashmap.put("profile/gender", gender );
         mHashmap.put("profile/marital", marital );
         mHashmap.put("profile/dependents", dependents );
-        //TODO hardcoded LO ID
+        mHashmap.put("profile/education", education );
+        mHashmap.put("profile/selfemployed", selfemployed );
+        mHashmap.put("profile/applicantincome", applicantincome );
+        mHashmap.put("profile/coapplicantincome", coapplicantincome );
+        mHashmap.put("profile/credithistory", credithistory );
+        //TODO hardcoded LO ID and client user role
         mHashmap.put("profile/loanOfficerId", "Pu9RVLXJSWO3hopm40tdYBaiHxd2");
+        mHashmap.put("userRoles/client", true );
+
         Log.d("Save", mDatabaseReference.toString());
         mDatabaseReference.updateChildren(mHashmap);
 
