@@ -3,12 +3,15 @@ package com.example.finaiapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -68,6 +72,9 @@ public class PersonalInfo extends AppCompatActivity {
     private String applicantincome;
     private String coapplicantincome;
     private String credithistory;
+
+    DatePickerDialog picker_dob;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +126,27 @@ public class PersonalInfo extends AppCompatActivity {
             //starting login activity
             startActivity(new Intent(this, LoginActivity.class));
         }
+
+
+        et_personal_dob.setInputType(InputType.TYPE_NULL);
+        et_personal_dob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar cal = Calendar.getInstance();
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+                int month = cal.get(Calendar.MONTH);
+                int year = cal.get(Calendar.YEAR);
+                // date picker dialog
+                picker_dob = new DatePickerDialog(PersonalInfo.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                et_personal_dob.setText((monthOfYear + 1) + "/" + (dayOfMonth) + "/" + year);
+                            }
+                        }, year, month, day);
+                picker_dob.show();
+            }
+        });
 
         //getting current user
         FirebaseUser user = firebaseAuth.getCurrentUser();
