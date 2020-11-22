@@ -227,7 +227,7 @@ public class PersonalInfo extends AppCompatActivity {
         Log.d("Save", mDatabaseReference.toString());
         mDatabaseReference.updateChildren(mHashmap);
 
-
+        startActivity(new Intent(this, ProfileActivity.class));
     }
 
 

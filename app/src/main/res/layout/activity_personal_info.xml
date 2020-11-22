@@ -122,8 +122,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Address 1"
-                    android:inputType="textPersonName"
-                    android:text="address1" />
+                    android:inputType="textPersonName" />
             </TableRow>
 
             <TableRow
@@ -141,8 +140,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Address 2"
-                    android:inputType="textPersonName"
-                    android:text="address2" />
+                    android:inputType="textPersonName" />
             </TableRow>
 
             <TableRow
@@ -161,8 +159,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="City"
-                    android:inputType="textPersonName"
-                    android:text="city" />
+                    android:inputType="textPersonName" />
             </TableRow>
 
             <TableRow
@@ -181,8 +178,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="State"
-                    android:inputType="textPersonName"
-                    android:text="state" />
+                    android:inputType="textPersonName" />
             </TableRow>
 
             <TableRow
@@ -201,8 +197,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="555 555 5555"
-                    android:inputType="textPersonName"
-                    android:text="555 555 1212" />
+                    android:inputType="textPersonName" />
             </TableRow>
 
             <TableRow
@@ -337,6 +332,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:hint="100000"
                     android:inputType="textPersonName" />
             </TableRow>
 
@@ -357,6 +353,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:hint="100000"
                     android:inputType="textPersonName" />
             </TableRow>
 
