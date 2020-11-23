@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import org.tensorflow.lite.Interpreter;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity{
                 startActivity(new Intent(getApplicationContext(), Register1Activity.class));
             }
         },3000);
+
+
 
    }}
 

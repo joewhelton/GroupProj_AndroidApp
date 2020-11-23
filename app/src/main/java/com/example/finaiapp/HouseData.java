@@ -2,36 +2,36 @@ package com.example.finaiapp;
 
 public class HouseData {
 
-    private int sale_yr;
-    private int sale_month;
-    private int sale_day;
-    private int bedrooms;
+    private float sale_yr;
+    private float sale_month;
+    private float sale_day;
+    private float bedrooms;
     private float bathrooms;
-    private int sqft_living;
-    private int sqft_lot;
+    private float sqft_living;
+    private float sqft_lot;
     private float floors;
-    private int waterfront;
-    private int view;
-    private int condition;
-    private int grade;
-    private int sqft_above;
-    private int sqft_basement;
-    private int yr_built;
-    private int yr_renovated;
-    private int zipcode;
+    private float waterfront;
+    private float view;
+    private float condition;
+    private float grade;
+    private float sqft_above;
+    private float sqft_basement;
+    private float yr_built;
+    private float yr_renovated;
+    private float zipcode;
     private float lat;
     private float longt;
-    private int sqft_living15;
-    private int sqft_lot15;
+    private float sqft_living15;
+    private float sqft_lot15;
 
     public HouseData(){
 
     }
 
-    public HouseData(int sale_yr, int sale_month, int sale_day, int bedrooms, float bathrooms, int sqft_living,
-                     int sqft_lot, float floors, int waterfront, int view, int condition, int grade, int sqft_above,
-                     int sqft_basement, int yr_built, int yr_renovated, int zipcode, float lat, float longt,
-                     int sqft_living15, int sqft_lot15) {
+    public HouseData(float sale_yr, float sale_month, float sale_day, float bedrooms, float bathrooms, float sqft_living,
+                     float sqft_lot, float floors, float waterfront, float view, float condition, float grade, float sqft_above,
+                     float sqft_basement, float yr_built, float yr_renovated, float zipcode, float lat, float longt,
+                     float sqft_living15, float sqft_lot15) {
         this.sale_yr = sale_yr;
         this.sale_month = sale_month;
         this.sale_day = sale_day;
@@ -54,7 +54,7 @@ public class HouseData {
         this.sqft_living15 = sqft_living15;
         this.sqft_lot15 = sqft_lot15;
     }
-    public int getSale_yr() {
+    public float getSale_yr() {
         return sale_yr;
     }
 
@@ -62,7 +62,7 @@ public class HouseData {
         this.sale_yr = sale_yr;
     }
 
-    public int getSale_month() {
+    public float getSale_month() {
         return sale_month;
     }
 
@@ -70,7 +70,7 @@ public class HouseData {
         this.sale_month = sale_month;
     }
 
-    public int getSale_day() {
+    public float getSale_day() {
         return sale_day;
     }
 
@@ -78,7 +78,7 @@ public class HouseData {
         this.sale_day = sale_day;
     }
 
-    public int getBedrooms() {
+    public float getBedrooms() {
         return bedrooms;
     }
 
@@ -94,7 +94,7 @@ public class HouseData {
         this.bathrooms = bathrooms;
     }
 
-    public int getSqft_living() {
+    public float getSqft_living() {
         return sqft_living;
     }
 
@@ -102,7 +102,7 @@ public class HouseData {
         this.sqft_living = sqft_living;
     }
 
-    public int getSqft_lot() {
+    public float getSqft_lot() {
         return sqft_lot;
     }
 
@@ -118,7 +118,7 @@ public class HouseData {
         this.floors = floors;
     }
 
-    public int getWaterfront() {
+    public float getWaterfront() {
         return waterfront;
     }
 
@@ -126,7 +126,7 @@ public class HouseData {
         this.waterfront = waterfront;
     }
 
-    public int getView() {
+    public float getView() {
         return view;
     }
 
@@ -134,7 +134,7 @@ public class HouseData {
         this.view = view;
     }
 
-    public int getCondition() {
+    public float getCondition() {
         return condition;
     }
 
@@ -142,7 +142,7 @@ public class HouseData {
         this.condition = condition;
     }
 
-    public int getGrade() {
+    public float getGrade() {
         return grade;
     }
 
@@ -150,7 +150,7 @@ public class HouseData {
         this.grade = grade;
     }
 
-    public int getSqft_above() {
+    public float getSqft_above() {
         return sqft_above;
     }
 
@@ -158,7 +158,7 @@ public class HouseData {
         this.sqft_above = sqft_above;
     }
 
-    public int getSqft_basement() {
+    public float getSqft_basement() {
         return sqft_basement;
     }
 
@@ -166,7 +166,7 @@ public class HouseData {
         this.sqft_basement = sqft_basement;
     }
 
-    public int getYr_built() {
+    public float getYr_built() {
         return yr_built;
     }
 
@@ -174,7 +174,7 @@ public class HouseData {
         this.yr_built = yr_built;
     }
 
-    public int getYr_renovated() {
+    public float getYr_renovated() {
         return yr_renovated;
     }
 
@@ -182,7 +182,7 @@ public class HouseData {
         this.yr_renovated = yr_renovated;
     }
 
-    public int getZipcode() {
+    public float getZipcode() {
         return zipcode;
     }
 
@@ -206,7 +206,7 @@ public class HouseData {
         this.longt = longt;
     }
 
-    public int getSqft_living15() {
+    public float getSqft_living15() {
         return sqft_living15;
     }
 
@@ -214,7 +214,7 @@ public class HouseData {
         this.sqft_living15 = sqft_living15;
     }
 
-    public int getSqft_lot15() {
+    public float getSqft_lot15() {
         return sqft_lot15;
     }
 
