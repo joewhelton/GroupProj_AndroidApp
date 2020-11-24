@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
     private Button buttonLogout;
     private Button buttonPersonal;
-    private Button buttonLogout, buttonSearchHousePrices;
+    private Button buttonSearchHousePrices;
     private TextView textViewUserEmail;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
