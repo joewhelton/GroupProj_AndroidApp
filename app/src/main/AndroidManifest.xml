@@ -13,6 +13,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".PersonalInfo"></activity>
         <activity android:name=".PrivacyPolicyActivity" />
+        <activity android:name=".HouseDataActivity"></activity>
+        <activity android:name=".PrivacyPolicyActivity" />
         <activity android:name=".Register2Activity" />
         <activity android:name=".ForgottenPasswordActivity" />
         <activity android:name=".Register1Activity" />

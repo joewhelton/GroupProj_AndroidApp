@@ -9,8 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
     private Button buttonLogout;
     private Button buttonPersonal;
+    private Button buttonLogout, buttonSearchHousePrices;
     private TextView textViewUserEmail;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
@@ -56,6 +55,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         textViewUserEmail = (TextView) findViewById(R.id.textViewUserEmail);
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
         buttonPersonal = (Button) findViewById(R.id.buttonPersonal);
+        buttonSearchHousePrices = (Button) findViewById(R.id.buttonSearchHousePrices);
         mDatabaseReference = mDatabaseReference.child(firebaseAuth.getCurrentUser().getUid());
         mDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -74,6 +74,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         //adding listener to button
         buttonLogout.setOnClickListener(this);
         buttonPersonal.setOnClickListener(this);
+        buttonSearchHousePrices.setOnClickListener(this);
     }
 
     @Override
@@ -93,5 +94,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             startActivity(new Intent(this, PersonalInfo.class));
         }
 
+        if(view == buttonSearchHousePrices){
+            finish();
+            //starting login activity
+            startActivity(new Intent(this, HouseDataActivity.class));
+        }
     }
 }
