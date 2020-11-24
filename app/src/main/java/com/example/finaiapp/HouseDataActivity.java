@@ -45,7 +45,6 @@ public class HouseDataActivity extends AppCompatActivity {
     private Interpreter interpreter;
     private float[][] houseInputData;
     private float prediction;
-    private Interpreter tflite;
     private TextView predictPrice;
 
     @Override
@@ -114,7 +113,6 @@ public class HouseDataActivity extends AppCompatActivity {
                             } catch (Exception e) {
                                 e.printStackTrace();
                                 Toast.makeText(HouseDataActivity.this, "Model not read", Toast.LENGTH_LONG).show();
-
                             }
                         }
                     }
@@ -132,61 +130,60 @@ public class HouseDataActivity extends AppCompatActivity {
 
     //get user inputs and instantiate HousePrice class
     private HouseData getUserInputs() {
-
-        float sale_yr, sale_month, sale_day, bedrooms, sqft_living, sqft_lot, waterfront, viewt, condition, grade,
+        int sale_yr, sale_month, sale_day, bedrooms, sqft_living, sqft_lot, waterfront, viewt, condition, grade,
                 sqft_above, sqft_basement, yr_built, yr_renovated, zipcode, sqft_living15, sqft_lot15;
-        float bathrooms, floors, lat, longt;
+        float bathrooms, floors, lat, longt, prediction;
 
                 //get user inputs, check if empty and load default data if so
-        if (hasContent(saleYr)) { sale_yr = Float.parseFloat(saleYr.getText().toString());
+        if (hasContent(saleYr)) { sale_yr = Integer.parseInt(saleYr.getText().toString());
         } else { sale_yr = 2014;
         }
-        if (hasContent(saleMonth)) { sale_month = Float.parseFloat(saleMonth.getText().toString());
+        if (hasContent(saleMonth)) { sale_month = Integer.parseInt(saleMonth.getText().toString());
         } else { sale_month = 6;
         }
-        if (hasContent(saleDay)) { sale_day = Float.parseFloat(saleDay.getText().toString());
+        if (hasContent(saleDay)) { sale_day = Integer.parseInt(saleDay.getText().toString());
         } else { sale_day = 15;
         }
-        if (hasContent(bedroom)) { bedrooms = Float.parseFloat(bedroom.getText().toString());
+        if (hasContent(bedroom)) { bedrooms = Integer.parseInt(bedroom.getText().toString());
         } else { bedrooms = 3;
         }
         if (hasContent(bathroom)) { bathrooms = Float.parseFloat(bathroom.getText().toString());
         } else { bathrooms = 2;
         }
-        if (hasContent(sqFtLivingSpace)) { sqft_living = Float.parseFloat(sqFtLivingSpace.getText().toString());
+        if (hasContent(sqFtLivingSpace)) { sqft_living = Integer.parseInt(sqFtLivingSpace.getText().toString());
         } else { sqft_living = 2079;
         }
-        if (hasContent(sqFtLoftSpace)) { sqft_lot = Float.parseFloat(sqFtLoftSpace.getText().toString());
+        if (hasContent(sqFtLoftSpace)) { sqft_lot = Integer.parseInt(sqFtLoftSpace.getText().toString());
         } else { sqft_lot = 15157;
         }
         if (hasContent(floor)) { floors = Float.parseFloat(floor.getText().toString());
         } else { floors = 1;
         }
-        if (hasContentSpin(spinnerWaterfront)) { waterfront = Float.parseFloat(spinnerWaterfront.getSelectedItem().toString());
+        if (hasContentSpin(spinnerWaterfront)) { waterfront = Integer.parseInt(spinnerWaterfront.getSelectedItem().toString());
         } else { waterfront = 0;
         }
-        if (hasContentSpin(spinnerView)) { viewt = Float.parseFloat(spinnerView.getSelectedItem().toString());
+        if (hasContentSpin(spinnerView)) { viewt = Integer.parseInt(spinnerView.getSelectedItem().toString());
         } else { viewt = 0;
         }
-        if (hasContentSpin(spinnerCondition)) { condition = Float.parseFloat(spinnerCondition.getSelectedItem().toString());
+        if (hasContentSpin(spinnerCondition)) { condition = Integer.parseInt(spinnerCondition.getSelectedItem().toString());
         } else { condition = 3;
         }
-        if (hasContentSpin(spinnerGrade)) { grade = Float.parseFloat(spinnerGrade.getSelectedItem().toString());
+        if (hasContentSpin(spinnerGrade)) { grade = Integer.parseInt(spinnerGrade.getSelectedItem().toString());
         } else { grade = 7;
         }
-        if (hasContent(sqFtAboveGround)) { sqft_above = Float.parseFloat(sqFtAboveGround.getText().toString());
+        if (hasContent(sqFtAboveGround)) { sqft_above = Integer.parseInt(sqFtAboveGround.getText().toString());
         } else { sqft_above = 1789;
         }
-        if (hasContent(sqFtBasement)) { sqft_basement = Float.parseFloat(sqFtBasement.getText().toString());
+        if (hasContent(sqFtBasement)) { sqft_basement = Integer.parseInt(sqFtBasement.getText().toString());
         } else { sqft_basement = 290;
         }
-        if (hasContent(yrBuilt)) { yr_built = Float.parseFloat(yrBuilt.getText().toString());
+        if (hasContent(yrBuilt)) { yr_built = Integer.parseInt(yrBuilt.getText().toString());
         } else { yr_built = 1971;
         }
-        if (hasContent(yrRenovated)) { yr_renovated = Float.parseFloat(yrRenovated.getText().toString());
+        if (hasContent(yrRenovated)) { yr_renovated = Integer.parseInt(yrRenovated.getText().toString());
         } else { yr_renovated = 0;
         }
-        if (hasContent(zipCode)) { zipcode = Float.parseFloat(zipCode.getText().toString());
+        if (hasContent(zipCode)) { zipcode = Integer.parseInt(zipCode.getText().toString());
         } else { zipcode = 98077;
         }
         if (hasContent(lati)) { lat = Float.parseFloat(lati.getText().toString());
@@ -195,17 +192,17 @@ public class HouseDataActivity extends AppCompatActivity {
         if (hasContent(longti)) { longt = Float.parseFloat(longti.getText().toString());
         } else { longt = 122;
         }
-        if (hasContent(sqFtLiving15)) { sqft_living15 = Float.parseFloat(sqFtLiving15.getText().toString());
+        if (hasContent(sqFtLiving15)) { sqft_living15 = Integer.parseInt(sqFtLiving15.getText().toString());
         } else { sqft_living15 = 1987;
         }
-        if (hasContent(sqFtLot15)) { sqft_lot15 = Float.parseFloat(sqFtLot15.getText().toString());
+        if (hasContent(sqFtLot15)) { sqft_lot15 = Integer.parseInt(sqFtLot15.getText().toString());
         } else { sqft_lot15 = 12944;
         }
+        prediction = 0;
 
         //create 2d array for inference to model with mean values
         houseInputData = new float[][] { {sale_yr, sale_month, sale_day, bedrooms, bathrooms, sqft_living, sqft_lot, floors,
                 waterfront, viewt, condition, grade, sqft_above, sqft_basement, yr_built, yr_renovated, zipcode, lat, longt, sqft_living15, sqft_lot15}};
-
         try {
             prediction = doInference(houseInputData);
             predictPrice.setText(Float.toString(prediction));
@@ -214,11 +211,10 @@ public class HouseDataActivity extends AppCompatActivity {
             Toast.makeText(HouseDataActivity.this, "No inference", Toast.LENGTH_LONG).show();
 
         }
-
         //instantiate House Price class using user inputs
         return new HouseData(sale_yr, sale_month, sale_day, bedrooms, bathrooms,
                 sqft_living, sqft_lot, floors, waterfront, viewt, condition,
-                grade, sqft_above, sqft_basement, yr_built, yr_renovated, zipcode, lat, longt, sqft_living15, sqft_lot15);
+                grade, sqft_above, sqft_basement, yr_built, yr_renovated, zipcode, lat, longt, sqft_living15, sqft_lot15, prediction);
     }
 
     private boolean hasContent(EditText et) {
@@ -240,8 +236,9 @@ public class HouseDataActivity extends AppCompatActivity {
 
     //query the model with array created by inputs
     public float doInference(float[][] input){
+
         float[][] outputval = new float[1][1];
-        tflite.run(input, outputval);
+        interpreter.run(input, outputval);
         //get back data and put into a float to return.
         float inferredValue = outputval[0][0];
         return inferredValue;
@@ -256,5 +253,4 @@ public class HouseDataActivity extends AppCompatActivity {
             }
         });
     }
-
 }
