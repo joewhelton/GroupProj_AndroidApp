@@ -254,7 +254,8 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="1300dp"
             android:layout_marginBottom="1dp"
-            android:text="Your predicted price is.." />
+            android:text="Your predicted price is.."
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/sqFtLot15"
