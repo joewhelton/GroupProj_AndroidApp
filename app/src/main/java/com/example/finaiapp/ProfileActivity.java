@@ -21,6 +21,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private Button buttonLogout;
     private Button buttonPersonal;
     private Button buttonSearchHousePrices;
+    private Button buttonLoanOfficer;
     private TextView textViewUserEmail;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
@@ -41,7 +42,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         //if the user is not logged in
         //that means current user will return null
-        if(firebaseAuth.getCurrentUser() == null){
+        if (firebaseAuth.getCurrentUser() == null) {
             //closing this activity
             finish();
             //starting login activity
@@ -56,13 +57,14 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
         buttonPersonal = (Button) findViewById(R.id.buttonPersonal);
         buttonSearchHousePrices = (Button) findViewById(R.id.buttonSearchHousePrices);
+        buttonLoanOfficer = (Button) findViewById(R.id.buttonLoanOfficer);
         mDatabaseReference = mDatabaseReference.child(firebaseAuth.getCurrentUser().getUid());
         mDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String firstName = snapshot.child("firstName").getValue().toString();
                 //displaying logged in user name
-                textViewUserEmail.setText("Welcome "+firstName);
+                textViewUserEmail.setText("Welcome " + firstName);
             }
 
             @Override
@@ -75,29 +77,40 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         buttonLogout.setOnClickListener(this);
         buttonPersonal.setOnClickListener(this);
         buttonSearchHousePrices.setOnClickListener(this);
+        buttonLoanOfficer.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        //if logout is pressed
-        if(view == buttonLogout){
-            //logging out the user
-            firebaseAuth.signOut();
-            //closing activity
-            finish();
-            //starting login activity
-            startActivity(new Intent(this, LoginActivity.class));
+
+        // perform action on click
+        switch (view.getId()) {
+            case R.id.buttonLogout:
+                // logout is pressed
+                //logging out the user
+                firebaseAuth.signOut();
+                //closing activity
+                finish();
+                //starting login activity
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
+
+            case R.id.buttonPersonal:
+                // move to personal info
+                startActivity(new Intent(this, PersonalInfo.class));
+                break;
+
+            case R.id.buttonSearchHousePrices:
+                finish();
+                //starting login activity
+                startActivity(new Intent(this, HouseDataActivity.class));
+                break;
+
+            case R.id.buttonLoanOfficer:
+                //switch to loan officer activity
+                startActivity(new Intent(this, LoanOfficerActivity.class));
+                break;
         }
 
-        if(view == buttonPersonal) {
-            // move to personal info
-            startActivity(new Intent(this, PersonalInfo.class));
-        }
-
-        if(view == buttonSearchHousePrices){
-            finish();
-            //starting login activity
-            startActivity(new Intent(this, HouseDataActivity.class));
-        }
     }
 }
