@@ -21,7 +21,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private Button buttonLogout;
     private Button buttonPersonal;
     private Button buttonSearchHousePrices;
-    private Button buttonLoanOfficer;
+    private Button buttonContactLoanOfficer;
+    private Button buttonSelectLoanOfficer;
     private TextView textViewUserEmail;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
@@ -57,7 +58,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
         buttonPersonal = (Button) findViewById(R.id.buttonPersonal);
         buttonSearchHousePrices = (Button) findViewById(R.id.buttonSearchHousePrices);
-        buttonLoanOfficer = (Button) findViewById(R.id.buttonLoanOfficer);
+        buttonContactLoanOfficer = (Button) findViewById(R.id.buttonContactLoanOfficer);
+        buttonSelectLoanOfficer = (Button) findViewById(R.id.buttonSelectLoanOfficer);
+
         mDatabaseReference = mDatabaseReference.child(firebaseAuth.getCurrentUser().getUid());
         mDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -77,7 +80,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         buttonLogout.setOnClickListener(this);
         buttonPersonal.setOnClickListener(this);
         buttonSearchHousePrices.setOnClickListener(this);
-        buttonLoanOfficer.setOnClickListener(this);
+        buttonContactLoanOfficer.setOnClickListener(this);
+        buttonSelectLoanOfficer.setOnClickListener(this);
     }
 
     @Override
@@ -106,9 +110,14 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(new Intent(this, HouseDataActivity.class));
                 break;
 
-            case R.id.buttonLoanOfficer:
-                //switch to loan officer activity
-                startActivity(new Intent(this, LoanOfficerActivity.class));
+            case R.id.buttonContactLoanOfficer:
+                //switch to contact loan officer activity
+                startActivity(new Intent(this, ContactLoanOfficerActivity.class));
+                break;
+
+            case R.id.buttonSelectLoanOfficer:
+                //switch to select loan officer activity
+                startActivity(new Intent(this, SelectLoanOfficerActivity.class));
                 break;
         }
 

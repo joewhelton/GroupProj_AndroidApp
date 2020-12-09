@@ -44,12 +44,17 @@
             android:text="View Maximum House Price" />
 
         <Button
-            android:id="@+id/buttonLoanOfficer"
+            android:id="@+id/buttonContactLoanOfficer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Choose Loan Officer" />
+            android:text="Contact Loan Officer" />
 
-
+        <Button
+            android:id="@+id/buttonSelectLoanOfficer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Select Loan Officer" />
     </LinearLayout>
 </RelativeLayout>

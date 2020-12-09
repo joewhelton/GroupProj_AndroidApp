@@ -37,5 +37,15 @@
         <item>"13"</item>
     </string-array>
 
+    <string-array name="spinner_bank_test">
+        <item>"Bob's Big Bank"</item>
+        <item>"Kieran's Bank"</item>
+        <item>"Joes Bank"</item>
+        <item>"Jim's Bank"</item>
+    </string-array>
 
+    <string-array name="spinner_loan_officer_test">
+        <item>"Joseph Lastname"</item>
+        <item>"Ivana Yomoney"</item>
+    </string-array>
 </resources>

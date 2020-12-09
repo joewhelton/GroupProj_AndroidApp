@@ -6,6 +6,7 @@ public class FinancialInstitution {
     private String email;
     private String name;
     private String phoneNumber;
+    private String key;
 
     public FinancialInstitution() {
     }
@@ -58,6 +59,14 @@ public class FinancialInstitution {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     @Override
     public String toString() {
         return "FinancialInstitution{" +
@@ -66,8 +75,7 @@ public class FinancialInstitution {
                 ", email='" + email + '\'' +
                 ", name='" + name + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", key='" + key + '\'' +
                 '}';
     }
-
-
 }
