@@ -21,6 +21,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private Button buttonLogout;
     private Button buttonPersonal;
     private Button buttonSearchHousePrices;
+    private Button buttonCheckEligibility;
     private TextView textViewUserEmail;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
@@ -56,6 +57,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
         buttonPersonal = (Button) findViewById(R.id.buttonPersonal);
         buttonSearchHousePrices = (Button) findViewById(R.id.buttonSearchHousePrices);
+        buttonCheckEligibility = (Button) findViewById((R.id.buttonCheckEligibility));
         mDatabaseReference = mDatabaseReference.child(firebaseAuth.getCurrentUser().getUid());
         mDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -75,6 +77,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         buttonLogout.setOnClickListener(this);
         buttonPersonal.setOnClickListener(this);
         buttonSearchHousePrices.setOnClickListener(this);
+        buttonCheckEligibility.setOnClickListener(this);
     }
 
     @Override
@@ -98,6 +101,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             finish();
             //starting login activity
             startActivity(new Intent(this, HouseDataActivity.class));
+        }
+        if(view == buttonCheckEligibility){
+            finish();
+            //starting login activity
+            startActivity(new Intent(this, LoanEligibilityActivity.class));
         }
     }
 }

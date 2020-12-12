@@ -11,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PersonalInfo"></activity>
+        <activity android:name=".LoanEligibilityActivity"></activity>
+        <activity android:name=".PersonalInfo" />
         <activity android:name=".PrivacyPolicyActivity" />
-        <activity android:name=".HouseDataActivity"></activity>
+        <activity android:name=".HouseDataActivity" />
         <activity android:name=".Register2Activity" />
         <activity android:name=".ForgottenPasswordActivity" />
         <activity android:name=".Register1Activity" />
