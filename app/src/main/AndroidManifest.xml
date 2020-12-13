@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SelectLoanOfficerActivity"></activity>
+        <activity android:name=".RatingActivity"></activity>
+        <activity android:name=".SelectLoanOfficerActivity" />
         <activity android:name=".ContactLoanOfficerActivity" />
         <activity android:name=".PersonalInfo" />
         <activity android:name=".LoanEligibilityActivity"/>

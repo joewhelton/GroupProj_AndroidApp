@@ -14,7 +14,7 @@
         android:text="LO Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_rating_title" />
 
     <TextView
         android:id="@+id/textview_lo_bank"
@@ -44,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textview_lo_bank" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textview_rating_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
