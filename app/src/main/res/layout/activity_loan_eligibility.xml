@@ -14,7 +14,6 @@
         <TextView
             android:id="@+id/textview_personal_title"
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Check Loan Eligibility"
@@ -52,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:text="First" />
 
-                <EditText
+                <TextView
                     android:id="@+id/edittext_personal_first"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -60,8 +59,7 @@
                     android:enabled="false"
                     android:focusable="false"
                     android:hint="First Name"
-                    android:inputType="none"
-                    android:text="first" />
+                    android:inputType="none" />
             </TableRow>
 
 
@@ -75,15 +73,14 @@
                     android:layout_height="wrap_content"
                     android:text="Surname" />
 
-                <EditText
+                <TextView
                     android:id="@+id/edittext_personal_surname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:enabled="false"
                     android:focusable="false"
                     android:hint="Surname"
-                    android:inputType="none"
-                    android:text="last" />
+                    android:inputType="none" />
             </TableRow>
 
 
@@ -99,7 +96,7 @@
                     android:text="Gender" />
 
 
-                <EditText
+                <TextView
                     android:id="@+id/edittext_personal_gender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -118,11 +115,12 @@
                     android:text="Married" />
 
 
-                <EditText
+                <TextView
                     android:id="@+id/edittext_personal_marital"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:hint="Y/N"/>
             </TableRow>
 
 
@@ -137,7 +135,7 @@
                     android:text="Dependents" />
 
 
-                <EditText
+                <TextView
                     android:id="@+id/edittext_personal_dependents"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -153,15 +151,16 @@
                     android:id="@+id/textview_personal_educationlabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Education" />
+                    android:text="Graduate" />
 
 
-                <EditText
+                <TextView
                     android:id="@+id/edittext_personal_education"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:hint="Y/N"/>
             </TableRow>
 
 
@@ -176,12 +175,13 @@
                     android:text="Self Employed" />
 
 
-                <EditText
+                <TextView
                     android:id="@+id/edittext_personal_selfemployed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:hint = "Y/N"/>
             </TableRow>
 
             <TableRow
@@ -195,7 +195,7 @@
                     android:text="Applicant Income" />
 
 
-                <EditText
+                <TextView
                     android:id="@+id/edittext_personal_applicantincome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -216,7 +216,7 @@
                     android:text="Co-Applicant Income" />
 
 
-                <EditText
+                <TextView
                     android:id="@+id/edittext_personal_coapplicantincome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -236,12 +236,13 @@
                     android:text="Credit History" />
 
 
-                <EditText
+                <TextView
                     android:id="@+id/edittext_personal_credithistory"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:hint = "Y/N"/>
             </TableRow>
             <TableRow
                 android:layout_width="match_parent"
@@ -254,12 +255,26 @@
                     android:text="Property Area" />
 
 
-                <EditText
-                    android:id="@+id/edittext_propertyarea"
+                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:orientation="vertical">
+                    <RadioButton android:id="@+id/urban"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Urban"
+                        android:onClick="onRadioButtonClicked"/>
+                    <RadioButton android:id="@+id/rural"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rural"
+                        android:onClick="onRadioButtonClicked"/>
+                    <RadioButton android:id="@+id/semirural"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Suburbs"
+                        android:onClick="onRadioButtonClicked"/>
+                </RadioGroup>
             </TableRow>
             <TableRow
                 android:layout_width="match_parent"
@@ -295,41 +310,60 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName" />
-            </TableRow>
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/textview_model_output"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Model Output" />
-
-
-                <EditText
-                    android:id="@+id/edittext_model_output"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:hint= "Years"/>
             </TableRow>
         </TableLayout>
+
 
         <Button
             android:id="@+id/button_check_eligibility"
             android:layout_width="148dp"
-            android:layout_height="29dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/rounded_corners_button"
             android:text="Check Eligibility"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            app:layout_constraintBottom_toTopOf="@id/tv_displAns"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+        <TextView
+            android:id="@+id/tv_displAns"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="20"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_check_eligibility" />
+
+        <Button
+            android:id="@+id/button_apply"
+            android:layout_width="148dp"
+            android:layout_height="29dp"
+            android:background="@drawable/rounded_corners_button"
+            android:text="Apply now"
             android:textColor="@color/common_google_signin_btn_text_dark_default"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_displAns" />
+
+        <Button
+            android:id="@+id/button_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_corners_button"
+            android:text="Save this application"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_apply" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -80,7 +80,6 @@ public class HouseDataActivity extends AppCompatActivity {
         spinnerCondition = (Spinner) findViewById(R.id.spinnerCondition);
         spinnerGrade = (Spinner) findViewById(R.id.spinnerGrade);
         predictPrice = (TextView) findViewById(R.id.predictedPrice);
-        float[][] houseInputData;
 
         //if the objects getcurrentuser method is null
         //means user is not logged in
@@ -208,7 +207,7 @@ public class HouseDataActivity extends AppCompatActivity {
             predictPrice.setText(Float.toString(prediction));
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(HouseDataActivity.this, "No inference", Toast.LENGTH_LONG).show();
+            Toast.makeText(HouseDataActivity.this, "No price prediction", Toast.LENGTH_LONG).show();
 
         }
         //instantiate House Price class using user inputs
