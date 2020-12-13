@@ -25,8 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContactLoanOfficerActivity extends AppCompatActivity {
-    private static final String LO_ID = "Pu9RVLXJSWO3hopm40tdYBaiHxd2";
-    private static final String USER_ID = "3z7Jt7gduUWofFXOnTqrKky91hz2";
+//    private static final String LO_ID = "Pu9RVLXJSWO3hopm40tdYBaiHxd2";
+//    private static final String USER_ID = "3z7Jt7gduUWofFXOnTqrKky91hz2";
 
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase database;
@@ -47,7 +47,7 @@ public class ContactLoanOfficerActivity extends AppCompatActivity {
 
     private Button button_lo_phone;
 
-    private User loanOfficer;
+//    private User loanOfficer;
 
     private List<FinancialInstitution> fiList;
 
