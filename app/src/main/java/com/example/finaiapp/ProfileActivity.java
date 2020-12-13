@@ -23,6 +23,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private Button buttonSearchHousePrices;
     private Button buttonContactLoanOfficer;
     private Button buttonSelectLoanOfficer;
+    private Button buttonCheckEligibility;
     private TextView textViewUserEmail;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
@@ -61,6 +62,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         buttonContactLoanOfficer = (Button) findViewById(R.id.buttonContactLoanOfficer);
         buttonSelectLoanOfficer = (Button) findViewById(R.id.buttonSelectLoanOfficer);
 
+        buttonCheckEligibility = (Button) findViewById((R.id.buttonCheckEligibility));
         mDatabaseReference = mDatabaseReference.child(firebaseAuth.getCurrentUser().getUid());
         mDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -82,6 +84,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         buttonSearchHousePrices.setOnClickListener(this);
         buttonContactLoanOfficer.setOnClickListener(this);
         buttonSelectLoanOfficer.setOnClickListener(this);
+        buttonCheckEligibility.setOnClickListener(this);
     }
 
     @Override
@@ -119,6 +122,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 //switch to select loan officer activity
                 startActivity(new Intent(this, SelectLoanOfficerActivity.class));
                 break;
+        }
+        if(view == buttonCheckEligibility){
+            finish();
+            //starting login activity
+            startActivity(new Intent(this, LoanEligibilityActivity.class));
         }
 
     }

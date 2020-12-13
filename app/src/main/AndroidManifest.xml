@@ -14,6 +14,7 @@
         <activity android:name=".SelectLoanOfficerActivity"></activity>
         <activity android:name=".ContactLoanOfficerActivity" />
         <activity android:name=".PersonalInfo" />
+        <activity android:name=".LoanEligibilityActivity"/>
         <activity android:name=".PrivacyPolicyActivity" />
         <activity android:name=".HouseDataActivity" />
         <activity android:name=".Register2Activity" />
