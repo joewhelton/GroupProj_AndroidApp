@@ -55,7 +55,7 @@ public class LoanEligibilityActivity extends AppCompatActivity {
     private String propertyArea;
     private String loanAmount;
     private String loanTerm;
-    private Button btn_check_eligibility, btn_save;
+    private Button btn_check_eligibility, btn_save, btn_apply;
 
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
@@ -91,6 +91,7 @@ public class LoanEligibilityActivity extends AppCompatActivity {
         et_loan_term = findViewById(R.id.edittext_loan_term);
         btn_check_eligibility = findViewById(R.id.button_check_eligibility);
         btn_save = findViewById(R.id.button_save);
+        btn_apply = findViewById(R.id.button_apply);
         displans = findViewById(R.id.tv_displAns);
 
         //if the objects getcurrentuser method is null
@@ -116,22 +117,14 @@ public class LoanEligibilityActivity extends AppCompatActivity {
                         Log.d("Profile", "Found profile for " +  et_personal_first);
                         Log.d("Profile", snapshot.child("profile").getValue().toString());
                         et_personal_gender.setText(snapshot.child("profile").child("gender").getValue().toString());
-                        //if(snapshot.child("profile").child("gender").getValue().toString().equalsIgnoreCase("m")){genderf=1;}
                         et_personal_marital.setText(snapshot.child("profile").child("marital").getValue().toString());
-                        //if(snapshot.child("profile").child("marital").getValue().toString().equalsIgnoreCase("y")){marriedf=1;}
                         et_personal_dependents.setText(snapshot.child("profile").child("dependents").getValue().toString());
-                        //dependentsf= Float.parseFloat(snapshot.child("profile").child("dependents").getValue().toString());
-                        //if(dependentsf>2){dependentsf=3;}
                         et_personal_education.setText(snapshot.child("profile").child("education").getValue().toString());
-                        //if(snapshot.child("profile").child("education").getValue().toString().equalsIgnoreCase("n")){educationf=1;}
                         et_personal_selfemployed.setText(snapshot.child("profile").child("selfemployed").getValue().toString());
-                        //if(snapshot.child("profile").child("selfemployed").getValue().toString().equalsIgnoreCase("y")){selfemployedf=1;}
                         et_personal_applicantincome.setText(snapshot.child("profile").child("applicantincome").getValue().toString());
-                        //appIncomef= Float.parseFloat(snapshot.child("profile").child("applicantincome").getValue().toString());
                         et_personal_coapplicantincome.setText(snapshot.child("profile").child("coapplicantincome").getValue().toString());
-                        //coappIncomef = Float.parseFloat(snapshot.child("profile").child("coapplicantincome").getValue().toString());
                         et_personal_credithistory.setText(snapshot.child("profile").child("credithistory").getValue().toString());
-                        //if(snapshot.child("profile").child("credithistory").getValue().toString().equalsIgnoreCase("y")){selfemployedf=1;}
+
                     }
             }
 
@@ -176,6 +169,12 @@ public class LoanEligibilityActivity extends AppCompatActivity {
                 writeLoanDetails();
             }
         });
+        btn_apply.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            public void onClick(View view) {
+                apply();
+            }
+        });
         btn_save.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -183,8 +182,13 @@ public class LoanEligibilityActivity extends AppCompatActivity {
                 saveDetails();
             }
         });
+    }
 
-
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void apply() {
+        saveDetails();
+        finish();
+        startActivity(new Intent(this, SelectLoanOfficerActivity.class));
     }
     //Writes details to loanApplications in database
 
@@ -261,22 +265,6 @@ public class LoanEligibilityActivity extends AppCompatActivity {
             e.printStackTrace();
             Toast.makeText(LoanEligibilityActivity.this, "No answer", Toast.LENGTH_LONG).show();
         }
-
-        //DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        //LocalDateTime now = LocalDateTime.now();
-        //FirebaseUtil.openFbReference("loanApplications");
-        //mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
-        //mDatabaseReference = FirebaseUtil.mDatabaseReference;
-        //Writing Hashmap
-        //Map<String, Object> mHashmap = new HashMap<>();
-        //mHashmap.put("createdDate", dtf.format(now));
-        //mHashmap.put("clientId", firebaseAuth.getCurrentUser().getUid() );
-        //mHashmap.put("propertyArea", propertyArea );
-        //mHashmap.put("amount", loanAmount );
-        //mHashmap.put("term", loanTerm );
-        //mHashmap.put("Loan Model Answer", answer);
-        //mDatabaseReference.push().setValue(mHashmap);
-        //Toast.makeText(LoanEligibilityActivity.this, "Loan Details saved", Toast.LENGTH_LONG).show();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -300,7 +288,7 @@ public class LoanEligibilityActivity extends AppCompatActivity {
         mDatabaseReference.push().setValue(mHashmap);
         Toast.makeText(LoanEligibilityActivity.this, "Loan Details saved", Toast.LENGTH_LONG).show();
         finish();
-        startActivity(new Intent(this, ProfileActivity.class));
+        //startActivity(new Intent(this, ProfileActivity.class));
     }
 
     //query the model with array created by inputs
