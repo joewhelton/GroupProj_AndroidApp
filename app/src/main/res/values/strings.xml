@@ -5,6 +5,8 @@
     <string name="invalid_email">Please enter a valid email</string>
     <string name="invalid_password">Must be at least 8 characters long including a digit, uppercase letter, lowercase letter and special character</string>
     <string name="invalid_confirm_password">Password does not match</string>
+    <string name="rating_ratingbar_msg">Please let us know how we\'re doing by rating our app below</string>
+    <string name="rating_feedback_msg">If you have any further comments, please leave them here</string>
     <string-array name="spinner_waterfront">
         <item>"0"</item>
         <item>"1"</item>
