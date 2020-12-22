@@ -23,7 +23,6 @@
 
     <string-array name="spinner_profile_education">
         <item>Graduate</item>
-        <item>Graduate</item>
         <item>NotGraduate</item>
     </string-array>
 
