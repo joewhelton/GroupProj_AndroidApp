@@ -244,6 +244,26 @@
                 android:layout_height="match_parent">
 
                 <TextView
+                    android:id="@+id/textview_personal_genderspinnerlabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gender" />
+
+
+                <Spinner
+                    android:id="@+id/spinner_personal_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:entries="@array/spinner_profile_gender"
+                    android:inputType="textPersonName" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
                     android:id="@+id/textview_personal_maritallabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -257,6 +277,24 @@
                     android:inputType="textPersonName" />
             </TableRow>
 
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textview_personal_maritalspinnerlabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Married ?" />
+
+
+                <Spinner
+                    android:id="@+id/spinner_personal_marital"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:entries="@array/yes_no_empty" />
+            </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
@@ -282,6 +320,25 @@
                 android:layout_height="match_parent">
 
                 <TextView
+                    android:id="@+id/textview_personal_dependentspinnerlabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dependents" />
+
+
+                <Spinner
+                    android:id="@+id/spinner_personal_dependents"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:entries="@array/spinner_profile_dependents" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
                     android:id="@+id/textview_personal_educationlabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -296,6 +353,24 @@
                     android:inputType="textPersonName" />
             </TableRow>
 
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textview_personal_educationspinnerlabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Education" />
+
+
+                <Spinner
+                    android:id="@+id/spinner_personal_education"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:entries="@array/spinner_profile_education" />
+            </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
@@ -314,6 +389,25 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textPersonName" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textview_personal_selfemployedspinnerlabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Self Employed ?" />
+
+
+                <Spinner
+                    android:id="@+id/spinner_personal_selfemployed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:entries="@array/yes_no_empty" />
             </TableRow>
 
             <TableRow
@@ -374,6 +468,25 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textPersonName" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textview_personal_credithistoryspinnerlabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Credit History ?" />
+
+
+                <Spinner
+                    android:id="@+id/spinner_personal_credithistory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:entries="@array/spinner_profile_credit" />
             </TableRow>
         </TableLayout>
 
