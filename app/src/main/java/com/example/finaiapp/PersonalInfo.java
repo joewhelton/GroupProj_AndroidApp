@@ -79,7 +79,9 @@ public class PersonalInfo extends AppCompatActivity {
     private String selfemployed;
     private String applicantincome;
     private String coapplicantincome;
-    private String credithistory;
+    private String credithistoryStored;
+    private String credithistoryDisplay;
+    private int creditHistoryPos;
 
     DatePickerDialog picker_dob;
 
@@ -215,9 +217,14 @@ public class PersonalInfo extends AppCompatActivity {
                     applicantincome = snapshot.child("profile").child("applicantincome").getValue().toString();
                     coapplicantincome = snapshot.child("profile").child("coapplicantincome").getValue().toString();
 
-                    credithistory = snapshot.child("profile").child("credithistory").getValue().toString();
-                    String[] credithistoryVals = getResources().getStringArray(R.array.spinner_profile_credit);
-                    spin_personal_credithistory.setSelection(Arrays.asList(credithistoryVals).indexOf(credithistory));
+                    credithistoryStored = snapshot.child("profile").child("credithistory").getValue().toString();
+
+                    String[] credithistoryStoredVals = getResources().getStringArray(R.array.spinner_profile_credit);
+                    String[] credithistoryDisplayVals = getResources().getStringArray(R.array.spinner_profile_credittext);
+
+                    creditHistoryPos = Arrays.asList(credithistoryStoredVals).indexOf(credithistoryStored);
+
+                    spin_personal_credithistory.setSelection(creditHistoryPos);
 
                     et_personal_address1.setText(address1);
                     et_personal_address2.setText(address2);
@@ -225,14 +232,14 @@ public class PersonalInfo extends AppCompatActivity {
                     et_personal_state.setText(state);
                     et_personal_mobile.setText(mobile);
                     et_personal_dob.setText(dob);
-                    et_personal_gender.setText(gender);
-                    et_personal_marital.setText(marital);
-                    et_personal_dependents.setText(dependents);
-                    et_personal_education.setText(education);
-                    et_personal_selfemployed.setText(selfemployed);
+//                    et_personal_gender.setText(gender);
+//                    et_personal_marital.setText(marital);
+//                    et_personal_dependents.setText(dependents);
+//                    et_personal_education.setText(education);
+//                    et_personal_selfemployed.setText(selfemployed);
                     et_personal_applicantincome.setText(applicantincome);
                     et_personal_coapplicantincome.setText(coapplicantincome);
-                    et_personal_credithistory.setText(credithistory);
+//                    et_personal_credithistory.setText(credithistory);
                 }
             }
 
@@ -283,7 +290,14 @@ public class PersonalInfo extends AppCompatActivity {
         coapplicantincome = et_personal_coapplicantincome.getText().toString();
 
 //        credithistory = et_personal_credithistory.getText().toString();
-        credithistory = spin_personal_credithistory.getSelectedItem().toString();
+//        credithistoryStored = spin_personal_credithistory.getSelectedItem().toString();
+
+        creditHistoryPos = spin_personal_credithistory.getSelectedItemPosition();
+
+        String[] credithistoryStoredVals = getResources().getStringArray(R.array.spinner_profile_credit);
+//        String[] credithistoryDisplayVals = getResources().getStringArray(R.array.spinner_profile_credittext);
+
+        credithistoryStored = Arrays.asList(credithistoryStoredVals).get(creditHistoryPos);
 
 
         //Writing Hashmap
@@ -303,7 +317,7 @@ public class PersonalInfo extends AppCompatActivity {
         mHashmap.put("profile/selfemployed", selfemployed);
         mHashmap.put("profile/applicantincome", applicantincome);
         mHashmap.put("profile/coapplicantincome", coapplicantincome);
-        mHashmap.put("profile/credithistory", credithistory);
+        mHashmap.put("profile/credithistory", credithistoryStored);
         //TODO hardcoded LO ID and client user role
         mHashmap.put("profile/loanOfficerId", "Pu9RVLXJSWO3hopm40tdYBaiHxd2");
         mHashmap.put("userRoles/client", true);

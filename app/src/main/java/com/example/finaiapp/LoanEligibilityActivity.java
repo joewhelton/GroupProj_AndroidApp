@@ -228,6 +228,15 @@ public class LoanEligibilityActivity extends AppCompatActivity {
         //convert to months
         termf = termf*12;
 
+        // Gender = Male/Female/"" (empty string)
+        // Married = Yes/No/"" (empty string)
+        // Dependents = 0/1/2/3+
+        // Graduate = Graduate/NotGraduate
+        // SelfEmployed  Yes/No/""
+        // Applicant Income (number)
+        // Co-applicant income (number)
+        // Credit History "" (empty string)/1/0
+
         //if any other data is missing it will redirect back to profile before querying the model
         try {
             if(et_personal_gender.getText().toString().equalsIgnoreCase("f")){genderf=1;}

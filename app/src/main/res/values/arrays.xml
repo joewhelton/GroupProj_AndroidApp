@@ -33,5 +33,10 @@
         <item>0</item>
     </string-array>
 
+    <string-array name="spinner_profile_credittext">
+        <item></item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
 
 </resources>
