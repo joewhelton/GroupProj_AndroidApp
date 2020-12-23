@@ -15,6 +15,7 @@
     </string-array>
 
     <string-array name="spinner_profile_dependents">
+        <item></item>
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -22,8 +23,8 @@
     </string-array>
 
     <string-array name="spinner_profile_education">
-        <item>Graduate</item>
-        <item>NotGraduate</item>
+        <item>Yes</item>
+        <item>No</item>
     </string-array>
 
     <string-array name="spinner_profile_credit">

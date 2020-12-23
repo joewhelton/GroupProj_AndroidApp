@@ -218,13 +218,8 @@ public class PersonalInfo extends AppCompatActivity {
                     coapplicantincome = snapshot.child("profile").child("coapplicantincome").getValue().toString();
 
                     credithistoryStored = snapshot.child("profile").child("credithistory").getValue().toString();
-
-                    String[] credithistoryStoredVals = getResources().getStringArray(R.array.spinner_profile_credit);
-                    String[] credithistoryDisplayVals = getResources().getStringArray(R.array.spinner_profile_credittext);
-
-                    creditHistoryPos = Arrays.asList(credithistoryStoredVals).indexOf(credithistoryStored);
-
-                    spin_personal_credithistory.setSelection(creditHistoryPos);
+                    String[] credithistoryVals = getResources().getStringArray(R.array.yes_no_empty);
+                    spin_personal_credithistory.setSelection(Arrays.asList(credithistoryVals).indexOf(credithistoryStored));
 
                     et_personal_address1.setText(address1);
                     et_personal_address2.setText(address2);
@@ -289,15 +284,7 @@ public class PersonalInfo extends AppCompatActivity {
         applicantincome = et_personal_applicantincome.getText().toString();
         coapplicantincome = et_personal_coapplicantincome.getText().toString();
 
-//        credithistory = et_personal_credithistory.getText().toString();
-//        credithistoryStored = spin_personal_credithistory.getSelectedItem().toString();
-
-        creditHistoryPos = spin_personal_credithistory.getSelectedItemPosition();
-
-        String[] credithistoryStoredVals = getResources().getStringArray(R.array.spinner_profile_credit);
-//        String[] credithistoryDisplayVals = getResources().getStringArray(R.array.spinner_profile_credittext);
-
-        credithistoryStored = Arrays.asList(credithistoryStoredVals).get(creditHistoryPos);
+        credithistoryStored = spin_personal_credithistory.getSelectedItem().toString();
 
 
         //Writing Hashmap

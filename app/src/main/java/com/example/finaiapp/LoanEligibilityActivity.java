@@ -108,31 +108,31 @@ public class LoanEligibilityActivity extends AppCompatActivity {
         //retrieves user profile details from database and displays relevant details on screen
         mDatabaseReference = mDatabaseReference.child(firebaseAuth.getCurrentUser().getUid());
         mDatabaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                et_personal_first.setText(snapshot.child("firstName").getValue().toString());
-                et_personal_surname.setText(snapshot.child("surname").getValue().toString());
+                                                     @Override
+                                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                         et_personal_first.setText(snapshot.child("firstName").getValue().toString());
+                                                         et_personal_surname.setText(snapshot.child("surname").getValue().toString());
 
-                    if (snapshot.hasChild("profile")) {
-                        Log.d("Profile", "Found profile for " +  et_personal_first);
-                        Log.d("Profile", snapshot.child("profile").getValue().toString());
-                        et_personal_gender.setText(snapshot.child("profile").child("gender").getValue().toString());
-                        et_personal_marital.setText(snapshot.child("profile").child("marital").getValue().toString());
-                        et_personal_dependents.setText(snapshot.child("profile").child("dependents").getValue().toString());
-                        et_personal_education.setText(snapshot.child("profile").child("education").getValue().toString());
-                        et_personal_selfemployed.setText(snapshot.child("profile").child("selfemployed").getValue().toString());
-                        et_personal_applicantincome.setText(snapshot.child("profile").child("applicantincome").getValue().toString());
-                        et_personal_coapplicantincome.setText(snapshot.child("profile").child("coapplicantincome").getValue().toString());
-                        et_personal_credithistory.setText(snapshot.child("profile").child("credithistory").getValue().toString());
+                                                         if (snapshot.hasChild("profile")) {
+                                                             Log.d("Profile", "Found profile for " + et_personal_first);
+                                                             Log.d("Profile", snapshot.child("profile").getValue().toString());
+                                                             et_personal_gender.setText(snapshot.child("profile").child("gender").getValue().toString());
+                                                             et_personal_marital.setText(snapshot.child("profile").child("marital").getValue().toString());
+                                                             et_personal_dependents.setText(snapshot.child("profile").child("dependents").getValue().toString());
+                                                             et_personal_education.setText(snapshot.child("profile").child("education").getValue().toString());
+                                                             et_personal_selfemployed.setText(snapshot.child("profile").child("selfemployed").getValue().toString());
+                                                             et_personal_applicantincome.setText(snapshot.child("profile").child("applicantincome").getValue().toString());
+                                                             et_personal_coapplicantincome.setText(snapshot.child("profile").child("coapplicantincome").getValue().toString());
+                                                             et_personal_credithistory.setText(snapshot.child("profile").child("credithistory").getValue().toString());
 
-                    }
-            }
+                                                         }
+                                                     }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(),"An unknown error has occurred", Toast.LENGTH_SHORT);
-            }
-        }
+                                                     @Override
+                                                     public void onCancelled(@NonNull DatabaseError error) {
+                                                         Toast.makeText(getApplicationContext(), "An unknown error has occurred", Toast.LENGTH_SHORT);
+                                                     }
+                                                 }
         );
 
         //Download model or use model in app
@@ -193,19 +193,22 @@ public class LoanEligibilityActivity extends AppCompatActivity {
     //Writes details to loanApplications in database
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void writeLoanDetails(){
+    public void writeLoanDetails() {
         //String propertyArea = "";
         String loanAmount = "";
         String loanTerm = "";
         //get new data from details entered here and put them into the querying array.
 
         loanAmount = et_loan_amount.getText().toString().trim();
-        while (loanAmount.isEmpty()){
-            try{Float.parseFloat(loanAmount);}
-            catch(Exception e){
-            Toast.makeText(LoanEligibilityActivity.this, "Please enter amount in digits", Toast.LENGTH_LONG).show();
-            loanAmount="";
-            loanAmount = et_loan_amount.getText().toString().trim();}}
+        while (loanAmount.isEmpty()) {
+            try {
+                Float.parseFloat(loanAmount);
+            } catch (Exception e) {
+                Toast.makeText(LoanEligibilityActivity.this, "Please enter amount in digits", Toast.LENGTH_LONG).show();
+                loanAmount = "";
+                loanAmount = et_loan_amount.getText().toString().trim();
+            }
+        }
         amountf = Float.parseFloat(loanAmount);
 
         loanTerm = et_loan_term.getText().toString().trim();
@@ -219,14 +222,15 @@ public class LoanEligibilityActivity extends AppCompatActivity {
                 loanTerm = "";
             }
             termf = Float.parseFloat(loanTerm);
-            if((termf<9)&&(termf>31)){
+            if ((termf < 9) && (termf > 31)) {
                 Toast.makeText(LoanEligibilityActivity.this, "Please enter a term between 10 & 30 years", Toast.LENGTH_LONG).show();
                 loanTerm = "";
-            };
+            }
+            ;
         }
-        while(loanTerm.isEmpty());
+        while (loanTerm.isEmpty());
         //convert to months
-        termf = termf*12;
+        termf = termf * 12;
 
         // Gender = Male/Female/"" (empty string)
         // Married = Yes/No/"" (empty string)
@@ -239,27 +243,54 @@ public class LoanEligibilityActivity extends AppCompatActivity {
 
         //if any other data is missing it will redirect back to profile before querying the model
         try {
-            if(et_personal_gender.getText().toString().equalsIgnoreCase("f")){genderf=1;}
-            if ((et_personal_marital.getText().toString().equalsIgnoreCase("y"))) marriedf = 1;
-            dependentsf = Float.parseFloat((et_personal_dependents.getText().toString()));
-            if (dependentsf > 2) dependentsf = 3;
-            if ((et_personal_education.getText().toString()).equalsIgnoreCase("n")) educationf = 1;
-            if ((et_personal_selfemployed.getText().toString()).equalsIgnoreCase("y")) selfemployedf = 1;
+            if (et_personal_gender.getText().toString().equalsIgnoreCase("Female")) {
+                genderf = 1;
+            }
+            if ((et_personal_marital.getText().toString().equalsIgnoreCase("Yes"))) marriedf = 1;
+
+            switch (et_personal_dependents.getText().toString()) {
+                case "0":
+                    dependentsf = 0;
+                    break;
+                case "1":
+                    dependentsf = 1;
+                    break;
+                case "2":
+                    dependentsf = 2;
+                    break;
+                case "3+":
+                    dependentsf = 3;
+                    break;
+            }
+
+//            dependentsf = Float.parseFloat((et_personal_dependents.getText().toString()));
+//            if (dependentsf > 2) dependentsf = 3;
+
+            if ((et_personal_education.getText().toString()).equalsIgnoreCase("No"))
+                educationf = 1;
+
+            if ((et_personal_selfemployed.getText().toString()).equalsIgnoreCase("Yes"))
+                selfemployedf = 1;
+
             appIncomef = Float.parseFloat((et_personal_applicantincome.getText().toString()));
+
             coappIncomef = Float.parseFloat((et_personal_coapplicantincome.getText().toString()));
-            if ((et_personal_credithistory.getText().toString()).equalsIgnoreCase("y")) historyf = 1;
-        }catch(Exception e){
+
+            if ((et_personal_credithistory.getText().toString()).equalsIgnoreCase("Yes"))
+                historyf = 1;
+
+        } catch (Exception e) {
             Toast.makeText(LoanEligibilityActivity.this, "Please complete your profile first", Toast.LENGTH_LONG).show();
             startActivity(new Intent(this, PersonalInfo.class));
             finish();
         }
 
         loanData = new float[][]{{genderf, marriedf, dependentsf, educationf, selfemployedf,
-                appIncomef, coappIncomef, amountf, termf, historyf, propertyareaf }};
+                appIncomef, coappIncomef, amountf, termf, historyf, propertyareaf}};
 
         //check if array is complete
         for (int col = 0; col < loanData[0].length; col++) {
-            if(Objects.isNull(loanData[0][col])){
+            if (Objects.isNull(loanData[0][col])) {
                 Toast.makeText(LoanEligibilityActivity.this, "Please complete your profile and application", Toast.LENGTH_LONG).show();
                 finish();
                 startActivity(new Intent(this, PersonalInfo.class));
@@ -270,14 +301,14 @@ public class LoanEligibilityActivity extends AppCompatActivity {
         try {
             answer = doInference(loanData);
             displans.setText(Float.toString(answer));
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(LoanEligibilityActivity.this, "No answer", Toast.LENGTH_LONG).show();
         }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void saveDetails(){
+    public void saveDetails() {
         loanAmount = et_loan_amount.getText().toString();
         loanTerm = et_loan_term.getText().toString();
 
@@ -289,10 +320,10 @@ public class LoanEligibilityActivity extends AppCompatActivity {
         //Writing Hashmap
         Map<String, Object> mHashmap = new HashMap<>();
         mHashmap.put("createdDate", dtf.format(now));
-        mHashmap.put("clientId", firebaseAuth.getCurrentUser().getUid() );
-        mHashmap.put("propertyArea", propertyArea );
-        mHashmap.put("amount", loanAmount );
-        mHashmap.put("term", loanTerm );
+        mHashmap.put("clientId", firebaseAuth.getCurrentUser().getUid());
+        mHashmap.put("propertyArea", propertyArea);
+        mHashmap.put("amount", loanAmount);
+        mHashmap.put("term", loanTerm);
         mHashmap.put("Loan Model Answer", answer);
         mDatabaseReference.push().setValue(mHashmap);
         Toast.makeText(LoanEligibilityActivity.this, "Loan Details saved", Toast.LENGTH_LONG).show();
@@ -301,7 +332,7 @@ public class LoanEligibilityActivity extends AppCompatActivity {
     }
 
     //query the model with array created by inputs
-    public float doInference(float[][] input){
+    public float doInference(float[][] input) {
 
         float[][] outputval = new float[1][1];
         interpreter.run(input, outputval);
@@ -315,19 +346,19 @@ public class LoanEligibilityActivity extends AppCompatActivity {
         boolean checked = ((RadioButton) view).isChecked();
 
         // Check which radio button was clicked
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.rural:
                 if (checked)
 
-                    propertyareaf=0;
+                    propertyareaf = 0;
                 break;
             case R.id.urban:
                 if (checked)
-                    propertyareaf=1;
+                    propertyareaf = 1;
                 break;
             case R.id.semirural:
                 if (checked)
-                    propertyareaf=3;
+                    propertyareaf = 3;
                 break;
         }
     }
