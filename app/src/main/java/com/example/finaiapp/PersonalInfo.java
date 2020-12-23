@@ -80,8 +80,7 @@ public class PersonalInfo extends AppCompatActivity {
     private String applicantincome;
     private String coapplicantincome;
     private String credithistoryStored;
-    private String credithistoryDisplay;
-    private int creditHistoryPos;
+    private String loanOfficerId;
 
     DatePickerDialog picker_dob;
 
@@ -187,6 +186,8 @@ public class PersonalInfo extends AppCompatActivity {
                     Log.d("Profile", "Found profile for " + firstName);
                     Log.d("Profile", snapshot.child("profile").getValue().toString());
 
+
+                    loanOfficerId = snapshot.child("profile").child("loanOfficerId").getValue().toString();
                     address1 = snapshot.child("profile").child("address1").getValue().toString();
                     address2 = snapshot.child("profile").child("address2").getValue().toString();
                     city = snapshot.child("profile").child("city").getValue().toString();
@@ -286,6 +287,9 @@ public class PersonalInfo extends AppCompatActivity {
 
         credithistoryStored = spin_personal_credithistory.getSelectedItem().toString();
 
+        if (loanOfficerId == null) {
+            loanOfficerId = "Pu9RVLXJSWO3hopm40tdYBaiHxd2";
+        }
 
         //Writing Hashmap
         Map<String, Object> mHashmap = new HashMap<>();
@@ -306,7 +310,7 @@ public class PersonalInfo extends AppCompatActivity {
         mHashmap.put("profile/coapplicantincome", coapplicantincome);
         mHashmap.put("profile/credithistory", credithistoryStored);
         //TODO hardcoded LO ID and client user role
-        mHashmap.put("profile/loanOfficerId", "Pu9RVLXJSWO3hopm40tdYBaiHxd2");
+        mHashmap.put("profile/loanOfficerId", loanOfficerId);
         mHashmap.put("userRoles/client", true);
 
         Log.d("Save", mDatabaseReference.toString());
