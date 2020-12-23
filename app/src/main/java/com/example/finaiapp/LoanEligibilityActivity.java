@@ -108,31 +108,31 @@ public class LoanEligibilityActivity extends AppCompatActivity {
         //retrieves user profile details from database and displays relevant details on screen
         mDatabaseReference = mDatabaseReference.child(firebaseAuth.getCurrentUser().getUid());
         mDatabaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                et_personal_first.setText(snapshot.child("firstName").getValue().toString());
-                et_personal_surname.setText(snapshot.child("surname").getValue().toString());
+                 @Override
+                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+                     et_personal_first.setText(snapshot.child("firstName").getValue().toString());
+                     et_personal_surname.setText(snapshot.child("surname").getValue().toString());
 
-                    if (snapshot.hasChild("profile")) {
-                        Log.d("Profile", "Found profile for " +  et_personal_first);
-                        Log.d("Profile", snapshot.child("profile").getValue().toString());
-                        et_personal_gender.setText(snapshot.child("profile").child("gender").getValue().toString());
-                        et_personal_marital.setText(snapshot.child("profile").child("marital").getValue().toString());
-                        et_personal_dependents.setText(snapshot.child("profile").child("dependents").getValue().toString());
-                        et_personal_education.setText(snapshot.child("profile").child("education").getValue().toString());
-                        et_personal_selfemployed.setText(snapshot.child("profile").child("selfemployed").getValue().toString());
-                        et_personal_applicantincome.setText(snapshot.child("profile").child("applicantincome").getValue().toString());
-                        et_personal_coapplicantincome.setText(snapshot.child("profile").child("coapplicantincome").getValue().toString());
-                        et_personal_credithistory.setText(snapshot.child("profile").child("credithistory").getValue().toString());
+                     if (snapshot.hasChild("profile")) {
+                         Log.d("Profile", "Found profile for " + et_personal_first);
+                         Log.d("Profile", snapshot.child("profile").getValue().toString());
+                         et_personal_gender.setText(snapshot.child("profile").child("gender").getValue().toString());
+                         et_personal_marital.setText(snapshot.child("profile").child("marital").getValue().toString());
+                         et_personal_dependents.setText(snapshot.child("profile").child("dependents").getValue().toString());
+                         et_personal_education.setText(snapshot.child("profile").child("education").getValue().toString());
+                         et_personal_selfemployed.setText(snapshot.child("profile").child("selfemployed").getValue().toString());
+                         et_personal_applicantincome.setText(snapshot.child("profile").child("applicantincome").getValue().toString());
+                         et_personal_coapplicantincome.setText(snapshot.child("profile").child("coapplicantincome").getValue().toString());
+                         et_personal_credithistory.setText(snapshot.child("profile").child("credithistory").getValue().toString());
 
-                    }
-            }
+                     }
+                 }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(),"An unknown error has occurred", Toast.LENGTH_SHORT).show();
-            }
-        }
+                 @Override
+                 public void onCancelled(@NonNull DatabaseError error) {
+                     Toast.makeText(getApplicationContext(), "An unknown error has occurred", Toast.LENGTH_SHORT).show();
+                 }
+             }
         );
 
         //Download model or use model in app
@@ -321,20 +321,16 @@ public class LoanEligibilityActivity extends AppCompatActivity {
         Map<String, Object> mHashmap = new HashMap<>();
         mHashmap.put("createdDate", dtf.format(now));
         mHashmap.put("clientId", firebaseAuth.getCurrentUser().getUid());
+        mHashmap.put("married", et_personal_marital.getText().toString());
+        mHashmap.put("dependents", et_personal_dependents.getText().toString());
+        mHashmap.put("education", et_personal_education.getText().toString());
+        mHashmap.put("selfemployed", et_personal_selfemployed.getText().toString());
+        mHashmap.put("applicantIncome", et_personal_applicantincome.getText().toString());
+        mHashmap.put("coappIncome", et_personal_coapplicantincome.getText().toString());
+        mHashmap.put("credithistory", et_personal_credithistory.getText().toString());
         mHashmap.put("propertyArea", propertyArea);
         mHashmap.put("amount", loanAmount);
         mHashmap.put("term", loanTerm);
-        mHashmap.put("clientId", firebaseAuth.getCurrentUser().getUid() );
-        mHashmap.put("married", et_personal_marital.getText().toString() );
-        mHashmap.put("dependents", et_personal_dependents.getText().toString() );
-        mHashmap.put("education", et_personal_education.getText().toString() );
-        mHashmap.put("selfemployed", et_personal_selfemployed.getText().toString() );
-        mHashmap.put("applicantIncome", et_personal_applicantincome.getText().toString() );
-        mHashmap.put("coappIncome", et_personal_coapplicantincome.getText().toString() );
-        mHashmap.put("credithistory", et_personal_credithistory.getText().toString() );
-        mHashmap.put("propertyArea", propertyArea );
-        mHashmap.put("amount", loanAmount );
-        mHashmap.put("term", loanTerm );
         mHashmap.put("Loan Model Answer", answer);
         mDatabaseReference.push().setValue(mHashmap);
         Toast.makeText(LoanEligibilityActivity.this, "Loan Details saved", Toast.LENGTH_LONG).show();
@@ -359,16 +355,22 @@ public class LoanEligibilityActivity extends AppCompatActivity {
         // Check which radio button was clicked
         switch (view.getId()) {
             case R.id.rural:
-                if (checked)
+                if (checked) {
                     propertyareaf = 0;
+                    propertyArea = "rural";
+                }
                 break;
             case R.id.urban:
-                if (checked)
+                if (checked) {
                     propertyareaf = 2;
+                    propertyArea = "urban";
+                }
                 break;
             case R.id.semirural:
-                if (checked)
+                if (checked) {
                     propertyareaf = 1;
+                    propertyArea = "semirural";
+                }
                 break;
         }
     }
