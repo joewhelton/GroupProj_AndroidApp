@@ -1,10 +1,12 @@
 package com.example.finaiapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -32,6 +34,8 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class HouseDataActivity extends AppCompatActivity {
     //variable declarations
@@ -119,6 +123,7 @@ public class HouseDataActivity extends AppCompatActivity {
 
         //onClick method for View House Price report
         buttonHousePrices.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 HouseData houseData = getUserInputs();
@@ -244,8 +249,13 @@ public class HouseDataActivity extends AppCompatActivity {
     }
 
     //write data to Firebase database using house object
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void writeHouseData(HouseData house) {
-        mDatabaseReference.child(firebaseAuth.getCurrentUser().getUid()).setValue(house).addOnCompleteListener(new OnCompleteListener<Void>() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        house.setUid(firebaseAuth.getCurrentUser().getUid());
+        house.setCreatedDate(dtf.format(now));
+        mDatabaseReference.push().setValue(house).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 Toast.makeText(HouseDataActivity.this, "Data saved", Toast.LENGTH_LONG).show();
