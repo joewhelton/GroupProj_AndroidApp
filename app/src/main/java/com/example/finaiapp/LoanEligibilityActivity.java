@@ -331,6 +331,7 @@ public class LoanEligibilityActivity extends AppCompatActivity {
         mHashmap.put("selfemployed", et_personal_selfemployed.getText().toString() );
         mHashmap.put("applicantIncome", et_personal_applicantincome.getText().toString() );
         mHashmap.put("coappIncome", et_personal_coapplicantincome.getText().toString() );
+        mHashmap.put("credithistory", et_personal_credithistory.getText().toString() );
         mHashmap.put("propertyArea", propertyArea );
         mHashmap.put("amount", loanAmount );
         mHashmap.put("term", loanTerm );
