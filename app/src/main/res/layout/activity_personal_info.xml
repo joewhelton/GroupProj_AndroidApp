@@ -220,100 +220,114 @@
                     android:inputType="date" />
             </TableRow>
 
+
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
 
                 <TextView
-                    android:id="@+id/textview_personal_genderlabel"
+                    android:id="@+id/textview_personal_genderspinnerlabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Gender" />
 
 
-                <EditText
-                    android:id="@+id/edittext_personal_gender"
+                <Spinner
+                    android:id="@+id/spinner_personal_gender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:entries="@array/spinner_profile_gender"
                     android:inputType="textPersonName" />
             </TableRow>
 
+
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
 
                 <TextView
-                    android:id="@+id/textview_personal_maritallabel"
+                    android:id="@+id/textview_personal_maritalspinnerlabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Married ?" />
 
 
-                <EditText
-                    android:id="@+id/edittext_personal_marital"
+                <Spinner
+                    android:id="@+id/spinner_personal_marital"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName" />
+                    android:ems="10"
+                    android:entries="@array/yes_no_empty" />
             </TableRow>
-
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
 
                 <TextView
-                    android:id="@+id/textview_personal_dependentslabel"
+                    android:id="@+id/textview_personal_dependentspinnerlabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Dependents" />
 
 
-                <EditText
-                    android:id="@+id/edittext_personal_dependents"
+                <Spinner
+                    android:id="@+id/spinner_personal_dependents"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:entries="@array/spinner_profile_dependents" />
             </TableRow>
+
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
 
                 <TextView
-                    android:id="@+id/textview_personal_educationlabel"
+                    android:id="@+id/textview_personal_educationspinnerlabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Education" />
 
 
-                <EditText
-                    android:id="@+id/edittext_personal_education"
+                <Spinner
+                    android:id="@+id/spinner_personal_education"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:entries="@array/yes_no_empty" />
             </TableRow>
 
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
 
                 <TextView
-                    android:id="@+id/textview_personal_selfemployedlabel"
+                    android:id="@+id/textview_personal_selfemployedspinnerlabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Self Employed ?" />
 
 
-                <EditText
-                    android:id="@+id/edittext_personal_selfemployed"
+                <Spinner
+                    android:id="@+id/spinner_personal_selfemployed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:entries="@array/yes_no_empty" />
             </TableRow>
 
             <TableRow
@@ -359,21 +373,23 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
 
                 <TextView
-                    android:id="@+id/textview_personal_credithistorylabel"
+                    android:id="@+id/textview_personal_credithistoryspinnerlabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Credit History ?" />
 
 
-                <EditText
-                    android:id="@+id/edittext_personal_credithistory"
+                <Spinner
+                    android:id="@+id/spinner_personal_credithistory"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:entries="@array/spinner_profile_credittext" />
             </TableRow>
         </TableLayout>
 

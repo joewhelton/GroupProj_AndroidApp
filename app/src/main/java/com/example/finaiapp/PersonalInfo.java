@@ -7,11 +7,11 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -48,6 +49,13 @@ public class PersonalInfo extends AppCompatActivity {
     private TextView et_personal_coapplicantincome;
     private TextView et_personal_credithistory;
 
+    private Spinner spin_personal_gender;
+    private Spinner spin_personal_marital;
+    private Spinner spin_personal_dependents;
+    private Spinner spin_personal_education;
+    private Spinner spin_personal_selfemployed;
+    private Spinner spin_personal_credithistory;
+
     private Button btn_personal_save;
 
     private FirebaseDatabase mFirebaseDatabase;
@@ -71,7 +79,9 @@ public class PersonalInfo extends AppCompatActivity {
     private String selfemployed;
     private String applicantincome;
     private String coapplicantincome;
-    private String credithistory;
+    private String credithistoryStored;
+    private String credithistoryDisplay;
+    private int creditHistoryPos;
 
     DatePickerDialog picker_dob;
 
@@ -106,6 +116,14 @@ public class PersonalInfo extends AppCompatActivity {
         et_personal_coapplicantincome = findViewById(R.id.edittext_personal_coapplicantincome);
         et_personal_credithistory = findViewById(R.id.edittext_personal_credithistory);
 
+        // spinners
+        spin_personal_gender = findViewById(R.id.spinner_personal_gender);
+        spin_personal_marital = findViewById(R.id.spinner_personal_marital);
+        spin_personal_dependents = findViewById(R.id.spinner_personal_dependents);
+        spin_personal_education = findViewById(R.id.spinner_personal_education);
+        spin_personal_selfemployed = findViewById(R.id.spinner_personal_selfemployed);
+        spin_personal_credithistory = findViewById(R.id.spinner_personal_credithistory);
+
         btn_personal_save = findViewById(R.id.button_personal_save);
 
         //adding an onclicklistener to button
@@ -120,7 +138,7 @@ public class PersonalInfo extends AppCompatActivity {
         });
         //if the user is not logged in
         //that means current user will return null
-        if(firebaseAuth.getCurrentUser() == null){
+        if (firebaseAuth.getCurrentUser() == null) {
             //closing this activity
             finish();
             //starting login activity
@@ -166,7 +184,7 @@ public class PersonalInfo extends AppCompatActivity {
 
 
                 if (snapshot.hasChild("profile")) {
-                    Log.d("Profile", "Found profile for " +  firstName);
+                    Log.d("Profile", "Found profile for " + firstName);
                     Log.d("Profile", snapshot.child("profile").getValue().toString());
 
                     address1 = snapshot.child("profile").child("address1").getValue().toString();
@@ -175,14 +193,33 @@ public class PersonalInfo extends AppCompatActivity {
                     state = snapshot.child("profile").child("state").getValue().toString();
                     mobile = snapshot.child("profile").child("mobile").getValue().toString();
                     dob = snapshot.child("profile").child("dob").getValue().toString();
+
                     gender = snapshot.child("profile").child("gender").getValue().toString();
+                    String[] genderVals = getResources().getStringArray(R.array.spinner_profile_gender);
+                    spin_personal_gender.setSelection(Arrays.asList(genderVals).indexOf(gender));
+
                     marital = snapshot.child("profile").child("marital").getValue().toString();
+                    String[] maritalVals = getResources().getStringArray(R.array.yes_no_empty);
+                    spin_personal_marital.setSelection(Arrays.asList(maritalVals).indexOf(marital));
+
                     dependents = snapshot.child("profile").child("dependents").getValue().toString();
+                    String[] dependentVals = getResources().getStringArray(R.array.spinner_profile_dependents);
+                    spin_personal_dependents.setSelection(Arrays.asList(dependentVals).indexOf(dependents));
+
                     education = snapshot.child("profile").child("education").getValue().toString();
+                    String[] educationVals = getResources().getStringArray(R.array.spinner_profile_education);
+                    spin_personal_education.setSelection(Arrays.asList(educationVals).indexOf(education));
+
                     selfemployed = snapshot.child("profile").child("selfemployed").getValue().toString();
+                    String[] selfemployedVals = getResources().getStringArray(R.array.yes_no_empty);
+                    spin_personal_selfemployed.setSelection(Arrays.asList(selfemployedVals).indexOf(selfemployed));
+
                     applicantincome = snapshot.child("profile").child("applicantincome").getValue().toString();
                     coapplicantincome = snapshot.child("profile").child("coapplicantincome").getValue().toString();
-                    credithistory = snapshot.child("profile").child("credithistory").getValue().toString();
+
+                    credithistoryStored = snapshot.child("profile").child("credithistory").getValue().toString();
+                    String[] credithistoryVals = getResources().getStringArray(R.array.yes_no_empty);
+                    spin_personal_credithistory.setSelection(Arrays.asList(credithistoryVals).indexOf(credithistoryStored));
 
                     et_personal_address1.setText(address1);
                     et_personal_address2.setText(address2);
@@ -190,24 +227,23 @@ public class PersonalInfo extends AppCompatActivity {
                     et_personal_state.setText(state);
                     et_personal_mobile.setText(mobile);
                     et_personal_dob.setText(dob);
-                    et_personal_gender.setText(gender);
-                    et_personal_marital.setText(marital);
-                    et_personal_dependents.setText(dependents);
-                    et_personal_education.setText(education);
-                    et_personal_selfemployed.setText(selfemployed);
+//                    et_personal_gender.setText(gender);
+//                    et_personal_marital.setText(marital);
+//                    et_personal_dependents.setText(dependents);
+//                    et_personal_education.setText(education);
+//                    et_personal_selfemployed.setText(selfemployed);
                     et_personal_applicantincome.setText(applicantincome);
                     et_personal_coapplicantincome.setText(coapplicantincome);
-                    et_personal_credithistory.setText(credithistory);
+//                    et_personal_credithistory.setText(credithistory);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(),"An unknown error has occurred", Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(), "An unknown error has occurred", Toast.LENGTH_SHORT);
 
             }
         });
-
 
 
     }
@@ -221,41 +257,71 @@ public class PersonalInfo extends AppCompatActivity {
         state = et_personal_state.getText().toString();
         mobile = et_personal_mobile.getText().toString();
         dob = et_personal_dob.getText().toString();
-        gender = et_personal_gender.getText().toString();
-        marital = et_personal_marital.getText().toString();
-        dependents = et_personal_dependents.getText().toString();
-        education = et_personal_education.getText().toString();
-        selfemployed = et_personal_selfemployed.getText().toString();
+//        gender = et_personal_gender.getText().toString();
+        gender = spin_personal_gender.getSelectedItem().toString();
+
+//        String genderSpinnerValue = "";
+//
+//        if (hasContentSpin(spin_personal_gender)) {
+//            genderSpinnerValue = spin_personal_gender.getSelectedItem().toString();
+//            Log.d("SpinnerTest", genderSpinnerValue);
+//            Log.d("SpinnerTest", Integer.toString(spin_personal_gender.getSelectedItemPosition()));
+//        }
+
+
+//        marital = et_personal_marital.getText().toString();
+        marital = spin_personal_marital.getSelectedItem().toString();
+
+//        dependents = et_personal_dependents.getText().toString();
+        dependents = spin_personal_dependents.getSelectedItem().toString();
+
+//        education = et_personal_education.getText().toString();
+        education = spin_personal_education.getSelectedItem().toString();
+
+//        selfemployed = et_personal_selfemployed.getText().toString();
+        selfemployed = spin_personal_selfemployed.getSelectedItem().toString();
+
         applicantincome = et_personal_applicantincome.getText().toString();
         coapplicantincome = et_personal_coapplicantincome.getText().toString();
-        credithistory = et_personal_credithistory.getText().toString();
+
+        credithistoryStored = spin_personal_credithistory.getSelectedItem().toString();
+
 
         //Writing Hashmap
         Map<String, Object> mHashmap = new HashMap<>();
 
 
-        mHashmap.put("profile/address1", address1 );
-        mHashmap.put("profile/address2", address2 );
-        mHashmap.put("profile/city", city );
-        mHashmap.put("profile/state", state );
-        mHashmap.put("profile/mobile", mobile );
-        mHashmap.put("profile/dob", dob );
-        mHashmap.put("profile/gender", gender );
-        mHashmap.put("profile/marital", marital );
-        mHashmap.put("profile/dependents", dependents );
-        mHashmap.put("profile/education", education );
-        mHashmap.put("profile/selfemployed", selfemployed );
-        mHashmap.put("profile/applicantincome", applicantincome );
-        mHashmap.put("profile/coapplicantincome", coapplicantincome );
-        mHashmap.put("profile/credithistory", credithistory );
+        mHashmap.put("profile/address1", address1);
+        mHashmap.put("profile/address2", address2);
+        mHashmap.put("profile/city", city);
+        mHashmap.put("profile/state", state);
+        mHashmap.put("profile/mobile", mobile);
+        mHashmap.put("profile/dob", dob);
+        mHashmap.put("profile/gender", gender);
+        mHashmap.put("profile/marital", marital);
+        mHashmap.put("profile/dependents", dependents);
+        mHashmap.put("profile/education", education);
+        mHashmap.put("profile/selfemployed", selfemployed);
+        mHashmap.put("profile/applicantincome", applicantincome);
+        mHashmap.put("profile/coapplicantincome", coapplicantincome);
+        mHashmap.put("profile/credithistory", credithistoryStored);
         //TODO hardcoded LO ID and client user role
         mHashmap.put("profile/loanOfficerId", "Pu9RVLXJSWO3hopm40tdYBaiHxd2");
-        mHashmap.put("userRoles/client", true );
+        mHashmap.put("userRoles/client", true);
 
         Log.d("Save", mDatabaseReference.toString());
         mDatabaseReference.updateChildren(mHashmap);
 
         startActivity(new Intent(this, ProfileActivity.class));
+    }
+
+    private boolean hasContentSpin(Spinner spinner) {
+        //check if spinner input has content
+        boolean bHasContent = false;
+        if (spinner.getSelectedItem().toString().trim().length() > 0) {
+            bHasContent = true;
+        }
+        return bHasContent;
     }
 
 

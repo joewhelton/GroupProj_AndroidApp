@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="spinner_profile_gender">
+        <item></item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+
+    <string-array name="yes_no_empty">
+        <item></item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+    <string-array name="spinner_profile_dependents">
+        <item></item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3+</item>
+    </string-array>
+
+    <string-array name="spinner_profile_education">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+    <string-array name="spinner_profile_credit">
+        <item></item>
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+
+    <string-array name="spinner_profile_credittext">
+        <item></item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+</resources>
