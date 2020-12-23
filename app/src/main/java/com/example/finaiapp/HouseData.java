@@ -24,6 +24,8 @@ public class HouseData {
     private int sqft_living15;
     private int sqft_lot15;
     private float predictedPrice;
+    private String uid;
+    private String createdDate;
 
     public HouseData(){
     }
@@ -230,5 +232,22 @@ public class HouseData {
     public void setPredictedPrice(float predictedPrice) {
         this.predictedPrice = predictedPrice;
     }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
+
 }
 
