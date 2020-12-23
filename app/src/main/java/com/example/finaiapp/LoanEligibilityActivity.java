@@ -130,7 +130,7 @@ public class LoanEligibilityActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(),"An unknown error has occurred", Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(),"An unknown error has occurred", Toast.LENGTH_SHORT).show();
             }
         }
         );
@@ -192,6 +192,7 @@ public class LoanEligibilityActivity extends AppCompatActivity {
     }
     //Writes details to loanApplications in database
 
+    @SuppressLint("SetTextI18n")
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void writeLoanDetails(){
         //String propertyArea = "";
@@ -222,7 +223,7 @@ public class LoanEligibilityActivity extends AppCompatActivity {
             if((termf<9)&&(termf>31)){
                 Toast.makeText(LoanEligibilityActivity.this, "Please enter a term between 10 & 30 years", Toast.LENGTH_LONG).show();
                 loanTerm = "";
-            };
+            }
         }
         while(loanTerm.isEmpty());
         //convert to months
@@ -281,6 +282,12 @@ public class LoanEligibilityActivity extends AppCompatActivity {
         Map<String, Object> mHashmap = new HashMap<>();
         mHashmap.put("createdDate", dtf.format(now));
         mHashmap.put("clientId", firebaseAuth.getCurrentUser().getUid() );
+        mHashmap.put("married", et_personal_marital.getText().toString() );
+        mHashmap.put("dependents", et_personal_dependents.getText().toString() );
+        mHashmap.put("education", et_personal_education.getText().toString() );
+        mHashmap.put("selfemployed", et_personal_selfemployed.getText().toString() );
+        mHashmap.put("applicantIncome", et_personal_applicantincome.getText().toString() );
+        mHashmap.put("coappIncome", et_personal_coapplicantincome.getText().toString() );
         mHashmap.put("propertyArea", propertyArea );
         mHashmap.put("amount", loanAmount );
         mHashmap.put("term", loanTerm );
@@ -309,16 +316,15 @@ public class LoanEligibilityActivity extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.rural:
                 if (checked)
-
                     propertyareaf=0;
                 break;
             case R.id.urban:
                 if (checked)
-                    propertyareaf=1;
+                    propertyareaf=2;
                 break;
             case R.id.semirural:
                 if (checked)
-                    propertyareaf=3;
+                    propertyareaf=1;
                 break;
         }
     }

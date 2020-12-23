@@ -37,15 +37,15 @@ public class HouseDataActivity extends AppCompatActivity {
     //variable declarations
     private EditText saleYr, saleMonth, saleDay, bedroom, bathroom, sqFtLivingSpace, sqFtLoftSpace, floor,
             sqFtAboveGround, sqFtBasement, yrBuilt, yrRenovated, zipCode, lati, longti, sqFtLiving15, sqFtLot15;
-    private Button buttonHousePrices;
+    private Button buttonHousePrices, buttonPropertyTax;
     private Spinner spinnerWaterfront, spinnerView, spinnerCondition, spinnerGrade;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private Interpreter interpreter;
     private float[][] houseInputData;
-    private float prediction;
-    private TextView predictPrice;
+    private float prediction, inferredValue;
+    private TextView predictPrice, propertyTax;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +61,7 @@ public class HouseDataActivity extends AppCompatActivity {
         saleMonth = (EditText) findViewById(R.id.saleMonth);
         saleDay = (EditText) findViewById(R.id.saleDay);
         buttonHousePrices = (Button) findViewById(R.id.buttonViewReport);
+        buttonPropertyTax = (Button) findViewById(R.id.buttonViewTax);
         bedroom = (EditText) findViewById(R.id.noOfBedrooms);
         bathroom = (EditText) findViewById(R.id.noOfBathrooms);
         sqFtLivingSpace = (EditText) findViewById(R.id.sqFtLivingSpace);
@@ -80,6 +81,7 @@ public class HouseDataActivity extends AppCompatActivity {
         spinnerCondition = (Spinner) findViewById(R.id.spinnerCondition);
         spinnerGrade = (Spinner) findViewById(R.id.spinnerGrade);
         predictPrice = (TextView) findViewById(R.id.predictedPrice);
+        propertyTax = (TextView) findViewById(R.id.propertyTax);
 
         //if the objects getcurrentuser method is null
         //means user is not logged in
@@ -123,6 +125,18 @@ public class HouseDataActivity extends AppCompatActivity {
             public void onClick(View v) {
                 HouseData houseData = getUserInputs();
                 writeHouseData(houseData);
+            }
+        });
+        //predict what property tax will be
+        buttonPropertyTax.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(inferredValue!=0.0f) {
+                    float taxRate = (float) 0.00015;
+                    String tax = Float.toString(taxRate*inferredValue);
+                    propertyTax.setText(tax);
+                }
+                else Toast.makeText(HouseDataActivity.this, "Make a prediction first", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -204,7 +218,8 @@ public class HouseDataActivity extends AppCompatActivity {
                 waterfront, viewt, condition, grade, sqft_above, sqft_basement, yr_built, yr_renovated, zipcode, lat, longt, sqft_living15, sqft_lot15}};
         try {
             prediction = doInference(houseInputData);
-            predictPrice.setText(Float.toString(prediction));
+            String formatPredict = String.format("%.02f", prediction);
+            predictPrice.setText(formatPredict);
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(HouseDataActivity.this, "No price prediction", Toast.LENGTH_LONG).show();
@@ -239,7 +254,7 @@ public class HouseDataActivity extends AppCompatActivity {
         float[][] outputval = new float[1][1];
         interpreter.run(input, outputval);
         //get back data and put into a float to return.
-        float inferredValue = outputval[0][0];
+        inferredValue = outputval[0][0];
         return inferredValue;
     }
 
