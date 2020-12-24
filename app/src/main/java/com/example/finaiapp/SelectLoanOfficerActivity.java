@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class SelectLoanOfficerActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
@@ -167,7 +168,9 @@ public class SelectLoanOfficerActivity extends AppCompatActivity {
 
     }
 
-    private void populateBankSpinner() {
+    private void populateBankSpinner2() {
+
+        final AtomicBoolean done = new AtomicBoolean(false);
 
         dbRoot.child("financialInstitutions").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -189,6 +192,8 @@ public class SelectLoanOfficerActivity extends AppCompatActivity {
                 ArrayAdapter<String> bankNameAdapter = new ArrayAdapter<String>(SelectLoanOfficerActivity.this, android.R.layout.simple_spinner_item, bankNameList);
                 bankNameAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnerFinancial.setAdapter(bankNameAdapter);
+                done.set(true);
+
             }
 
             @Override
@@ -196,6 +201,47 @@ public class SelectLoanOfficerActivity extends AppCompatActivity {
                 throw databaseError.toException();
             }
         });
+        while (!done.get()) ;
+
+    }
+
+    private void populateBankSpinner() {
+        // get all financial Institutions
+//        Query query = dbRoot.child("financialInstitutions").orderByChild("name");
+        Query query = dbRoot.child("financialInstitutions");
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // dataSnapshot is the "issue" node with all children with id 0
+                    for (DataSnapshot finSnapshot : dataSnapshot.getChildren()) {
+                        String bankName = finSnapshot.child("name").getValue(String.class);
+                        String bankId = finSnapshot.getKey();
+                        if (bankName != null) {
+                            bankNameList.add(bankName);
+                            bankIdList.add(bankId);
+                        }
+
+                        FinancialInstitution fi = finSnapshot.getValue(FinancialInstitution.class);
+                        fi.setKey(finSnapshot.getKey());
+                        Log.d("FI", fi.toString());
+                        bankList.add(fi);
+                    }
+                }
+                ArrayAdapter<String> bankNameAdapter = new ArrayAdapter<String>(SelectLoanOfficerActivity.this, android.R.layout.simple_spinner_item, bankNameList);
+                bankNameAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerFinancial.setAdapter(bankNameAdapter);
+            }
+
+
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     //        // get all financial Institutions
