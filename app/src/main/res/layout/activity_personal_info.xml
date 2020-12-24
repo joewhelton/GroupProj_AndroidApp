@@ -305,7 +305,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:entries="@array/yes_no_empty" />
+                    android:entries="@array/spinner_profile_education" />
             </TableRow>
 
 
