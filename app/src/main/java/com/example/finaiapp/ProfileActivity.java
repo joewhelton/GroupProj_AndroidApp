@@ -9,6 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -99,6 +104,25 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 // logout is pressed
                 //logging out the user
                 firebaseAuth.signOut();
+
+
+                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestIdToken(getString(R.string.default_web_client_id))
+                        .requestEmail()
+                        .build();
+
+                // Build a GoogleSignInClient with the options specified by gso.
+                GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+                // Google sign out
+                mGoogleSignInClient.signOut().addOnCompleteListener(this,
+                        new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+//                            updateUI(null);
+                            }
+                        });
+
                 //closing activity
                 finish();
                 //starting login activity
@@ -131,7 +155,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(new Intent(this, RatingActivity.class));
                 break;
         }
-        if(view == buttonCheckEligibility){
+        if (view == buttonCheckEligibility) {
             finish();
             //starting login activity
             startActivity(new Intent(this, LoanEligibilityActivity.class));
