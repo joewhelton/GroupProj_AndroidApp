@@ -37,6 +37,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     private FirebaseAuth firebaseAuth;
 
+    private FirebaseUser user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +60,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         //getting current user
-        FirebaseUser user = firebaseAuth.getCurrentUser();
+        user = firebaseAuth.getCurrentUser();
 
         //initializing views
         textViewUserEmail = (TextView) findViewById(R.id.textViewUserEmail);
@@ -74,9 +76,18 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         mDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String firstName = snapshot.child("firstName").getValue().toString();
-                //displaying logged in user name
-                textViewUserEmail.setText("Welcome " + firstName);
+                 if (snapshot.hasChild("firstName")) {
+
+                    String firstName = snapshot.child("firstName").getValue().toString();
+                    //displaying logged in user name
+                    textViewUserEmail.setText("Welcome " + firstName);
+                } else {
+                     String displayName = user.getDisplayName();
+
+                     textViewUserEmail.setText("Welcome " + displayName);
+
+                 }
+
             }
 
             @Override
