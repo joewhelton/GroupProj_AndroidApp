@@ -82,6 +82,8 @@ public class PersonalInfo extends AppCompatActivity {
     private String credithistoryStored;
     private String loanOfficerId;
 
+    private FirebaseUser user;
+
     DatePickerDialog picker_dob;
 
 
@@ -166,23 +168,42 @@ public class PersonalInfo extends AppCompatActivity {
         });
 
         //getting current user
-        FirebaseUser user = firebaseAuth.getCurrentUser();
+        user = firebaseAuth.getCurrentUser();
 
         mDatabaseReference = mDatabaseReference.child(firebaseAuth.getCurrentUser().getUid());
         mDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                firstName = snapshot.child("firstName").getValue().toString();
-                surname = snapshot.child("surname").getValue().toString();
-                email = snapshot.child("email").getValue().toString();
 
-                //displaying logged in user name
-                et_personal_first.setText(firstName);
-                et_personal_surname.setText(surname);
-                et_personal_email.setText(email);
+                if (snapshot.hasChild("firstName")) {
+                    firstName = snapshot.child("firstName").getValue().toString();
+                    surname = snapshot.child("surname").getValue().toString();
+                    email = snapshot.child("email").getValue().toString();
 
+                    //displaying logged in user name
+                    et_personal_first.setText(firstName);
+                    et_personal_surname.setText(surname);
+                    et_personal_email.setText(email);
+
+                    et_personal_first.setFocusable(false);
+                    et_personal_first.setEnabled(false);
+                    et_personal_surname.setFocusable(false);
+                    et_personal_surname.setEnabled(false);
+
+                } else {
+                    //displaying logged in user name
+                    et_personal_first.setFocusable(true);
+                    et_personal_first.setEnabled(true);
+                    et_personal_first.setInputType(InputType.TYPE_CLASS_TEXT);
+                    et_personal_surname.setFocusable(true);
+                    et_personal_surname.setEnabled(true);
+                    et_personal_surname.setInputType(InputType.TYPE_CLASS_TEXT);
+                    et_personal_email.setText(user.getEmail());
+                }
 
                 if (snapshot.hasChild("profile")) {
+
+
                     Log.d("Profile", "Found profile for " + firstName);
                     Log.d("Profile", snapshot.child("profile").getValue().toString());
 
@@ -237,6 +258,7 @@ public class PersonalInfo extends AppCompatActivity {
                     et_personal_coapplicantincome.setText(coapplicantincome);
 //                    et_personal_credithistory.setText(credithistory);
                 }
+
             }
 
             @Override
@@ -252,6 +274,11 @@ public class PersonalInfo extends AppCompatActivity {
     private void updateProfile() {
 
         // get fields from views
+        // get fields from views
+        firstName = et_personal_first.getText().toString();
+        surname = et_personal_surname.getText().toString();
+        email = et_personal_email.getText().toString();
+
         address1 = et_personal_address1.getText().toString();
         address2 = et_personal_address2.getText().toString();
         city = et_personal_city.getText().toString();
@@ -294,6 +321,10 @@ public class PersonalInfo extends AppCompatActivity {
         //Writing Hashmap
         Map<String, Object> mHashmap = new HashMap<>();
 
+
+        mHashmap.put("firstName", firstName);
+        mHashmap.put("surname", surname);
+        mHashmap.put("email", email);
 
         mHashmap.put("profile/address1", address1);
         mHashmap.put("profile/address2", address2);
