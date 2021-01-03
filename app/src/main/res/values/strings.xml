@@ -25,18 +25,20 @@
         <item>"4"</item>
         <item>"5"</item>
     </string-array>
+
     <string-array name="spinner_grade">
-        <item>"3"</item>
-        <item>"4"</item>
-        <item>"5"</item>
-        <item>"6"</item>
-        <item>"7"</item>
-        <item>"8"</item>
-        <item>"9"</item>
-        <item>"10"</item>
-        <item>"11"</item>
-        <item>"12"</item>
-        <item>"13"</item>
+        <item>"Select Grade"</item>
+        <item>"Does not meet standards"</item>
+        <item>"Older low quality"</item>
+        <item>"Small simple design"</item>
+        <item>"Low quality, simple design"</item>
+        <item>"Average"</item>
+        <item>"Just above average"</item>
+        <item>"Good design &amp; quality"</item>
+        <item>"High quality features"</item>
+        <item>"Custom design high quality"</item>
+        <item>"Custom design higher quality"</item>
+        <item>"Highest quality mansion"</item>
     </string-array>
 
     <string-array name="spinner_bank_test">
@@ -50,4 +52,27 @@
         <item>"Joseph Lastname"</item>
         <item>"Ivana Yomoney"</item>
     </string-array>
+
+    <string-array name="mean_hse_price">
+        <item>"3.366889"</item>
+        <item>"2078.696324"</item>
+        <item>"15125.213430"</item>
+        <item>"7.655977"</item>
+        <item>"1786.696324"</item>
+        <item>"12801.776266"</item>
+    </string-array>
+
+    <string-array name="std_hse_values">
+        <item>"0.902434"</item>
+        <item>"913.585933"</item>
+        <item>"41046.643512"</item>
+        <item>"1.17447"</item>
+        <item>"823.667747"</item>
+        <item>"26868.801571"</item>
+    </string-array>
+
+    <string-array name="mae_hse_price_model">
+        <item>"152650"</item>
+    </string-array>
+
 </resources>

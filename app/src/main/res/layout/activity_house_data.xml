@@ -5,12 +5,248 @@
     android:layout_height="fill_parent" >
 
     <RelativeLayout
-        android:id="@+id/tvPropertyTax"
         android:layout_width="match_parent"
         android:layout_height="1500dp">
 
+        <EditText
+            android:id="@+id/sqFtLivingSpace"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="173dp"
+            android:layout_marginLeft="173dp"
+            android:layout_marginTop="165dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/textGrade"
+            android:layout_width="133dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="11dp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginTop="307dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Design and condition" />
+
+        <Spinner
+            android:id="@+id/spinnerGrade"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="173dp"
+            android:layout_marginLeft="173dp"
+            android:layout_marginTop="305dp"
+            android:entries="@array/spinner_grade" />
+
+        <TextView
+            android:id="@+id/tvSqFt_AboveGround"
+            android:layout_width="141dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="11dp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginTop="364dp"
+            android:ems="10"
+            android:text="Sq ft above ground" />
 
         <EditText
+            android:id="@+id/sqFtAboveGround"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="175dp"
+            android:layout_marginLeft="175dp"
+            android:layout_marginTop="346dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/sqFtLot15"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="177dp"
+            android:layout_marginLeft="177dp"
+            android:layout_marginTop="407dp"
+            android:ems="10"
+            android:inputType="number" />
+
+
+        <Button
+            android:id="@+id/buttonViewReport"
+            android:layout_width="234dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="11dp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginTop="527dp"
+            android:background="@drawable/rounded_corners_button"
+            android:text="View House Price Report"
+            android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+        <TextView
+            android:id="@+id/predictedPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="false"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="590dp"
+            android:layout_marginBottom="1dp"
+            android:text="Your predicted price in $ is.."
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tvSqFt_Lot15"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="11dp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginTop="435dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Size of lots in area (sqft)" />
+
+        <TextView
+            android:id="@+id/tvSqFt_Lot"
+            android:layout_width="133dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="260dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Lot size Sqft" />
+
+        <EditText
+            android:id="@+id/sqFtLot"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="172dp"
+            android:layout_marginLeft="172dp"
+            android:layout_marginTop="235dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/tvNoOfBedrooms"
+            android:layout_width="122dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="127dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="No of bedrooms" />
+
+        <EditText
+            android:id="@+id/noOfBedrooms"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="174dp"
+            android:layout_marginLeft="174dp"
+            android:layout_marginTop="104dp"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:id="@+id/tvSqFt_LivingSpace"
+            android:layout_width="129dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="183dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Sq foot living space" />
+
+        <TextView
+            android:id="@+id/tvSearchHousePrice"
+            android:layout_width="306dp"
+            android:layout_height="58dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="46dp"
+            android:text="View maximum house price"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/colorAccent" />
+        <TextView
+            android:id="@+id/tvModelAccuracy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="false"
+            android:layout_marginStart="11dp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginTop="650dp"
+            android:layout_marginBottom="1dp"
+            android:text="Average error on this model:"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/buttonViewTax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginTop="700dp"
+            android:layout_marginBottom="1dp"
+            android:background="@drawable/rounded_corners_button"
+            android:text="View Property Tax on this house"
+            android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+        <TextView
+            android:id="@+id/propertyTax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="false"
+            android:layout_marginStart="11dp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginTop="760dp"
+            android:layout_marginBottom="1dp"
+            android:text="Your property tax will be.."
+            android:textSize="24sp" />
+
+        <!--<EditText
             android:id="@+id/saleMonth"
             android:layout_width="169dp"
             android:layout_height="wrap_content"
@@ -140,32 +376,6 @@
             android:text="Year Built" />
 
         <Spinner
-            android:id="@+id/spinnerGrade"
-            android:layout_width="169dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="175dp"
-            android:layout_marginLeft="175dp"
-            android:layout_marginTop="761dp"
-            android:entries="@array/spinner_grade" />
-
-        <TextView
-            android:id="@+id/textGrade"
-            android:layout_width="116dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="21dp"
-            android:layout_marginLeft="21dp"
-            android:layout_marginTop="762dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Grade" />
-
-        <Spinner
             android:id="@+id/spinnerCondition"
             android:layout_width="169dp"
             android:layout_height="wrap_content"
@@ -231,60 +441,7 @@
             android:inputType="textPersonName"
             android:text="Waterfront" />
 
-
-        <Button
-            android:id="@+id/buttonViewReport"
-            android:layout_width="234dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="11dp"
-            android:layout_marginLeft="11dp"
-            android:layout_marginTop="1346dp"
-            android:background="@drawable/rounded_corners_button"
-            android:text="View House Price Report"
-            android:textColor="@color/common_google_signin_btn_text_dark_default" />
-
-        <TextView
-            android:id="@+id/predictedPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="false"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="1400dp"
-            android:layout_marginBottom="1dp"
-            android:text="Your predicted price is.."
-            android:textSize="24sp" />
-
-        <EditText
-            android:id="@+id/sqFtLot15"
-            android:layout_width="169dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="169dp"
-            android:layout_marginLeft="168dp"
-            android:layout_marginTop="1284dp"
-            android:ems="10"
-            android:inputType="number" />
-
-        <EditText
-            android:id="@+id/sqFtLiving15"
-            android:layout_width="169dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="172dp"
-            android:layout_marginLeft="168dp"
-            android:layout_marginTop="1219dp"
-            android:ems="10"
-            android:inputType="number" />
-
-        <EditText
+            <EditText
             android:id="@+id/longtitude"
             android:layout_width="169dp"
             android:layout_height="wrap_content"
@@ -336,60 +493,6 @@
             android:ems="10"
             android:inputType="number" />
 
-        <EditText
-            android:id="@+id/noOfBedrooms"
-            android:layout_width="169dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="164dp"
-            android:layout_marginLeft="168dp"
-            android:layout_marginTop="259dp"
-            android:ems="10"
-            android:inputType="number" />
-
-        <EditText
-            android:id="@+id/sqFtLivingSpace"
-            android:layout_width="169dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="164dp"
-            android:layout_marginLeft="168dp"
-            android:layout_marginTop="385dp"
-            android:ems="10"
-            android:inputType="number" />
-
-        <TextView
-            android:id="@+id/tvSqFt_Lot15"
-            android:layout_width="128dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="13dp"
-            android:layout_marginLeft="13dp"
-            android:layout_marginTop="1300dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="sq_ft lot 15" />
-
-        <TextView
-            android:id="@+id/tvSqFt_LivingLot15"
-            android:layout_width="131dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="11dp"
-            android:layout_marginLeft="11dp"
-            android:layout_marginTop="1240dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="sq_ft living lot 15" />
-
         <TextView
             android:id="@+id/tvLongtitude"
             android:layout_width="96dp"
@@ -432,19 +535,7 @@
             android:inputType="textPersonName"
             android:text="sq_ft basement" />
 
-        <TextView
-            android:id="@+id/tvSqFt_AboveGround"
-            android:layout_width="141dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="17dp"
-            android:layout_marginLeft="17dp"
-            android:layout_marginTop="817dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="sq_ft above ground" />
+
 
         <TextView
             android:id="@+id/tvNoOfFloors"
@@ -475,46 +566,6 @@
             android:text="zipcode" />
 
         <TextView
-            android:id="@+id/tvSqFt_LoftSpace"
-            android:layout_width="133dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="13dp"
-            android:layout_marginTop="460dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="sq_ft lot" />
-
-
-        <EditText
-            android:id="@+id/sqFtLoftSpace"
-            android:layout_width="169dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="167dp"
-            android:layout_marginLeft="168dp"
-            android:layout_marginTop="437dp"
-            android:ems="10"
-            android:inputType="number" />
-
-        <TextView
-            android:id="@+id/tvNoOfBedrooms"
-            android:layout_width="122dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="13dp"
-            android:layout_marginLeft="13dp"
-            android:layout_marginTop="280dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="No of bedrooms" />
-
-        <TextView
             android:id="@+id/tvNoOfBathrooms"
             android:layout_width="124dp"
             android:layout_height="wrap_content"
@@ -527,34 +578,6 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:text="No of bathrooms" />
-
-        <TextView
-            android:id="@+id/tvSqFt_LivingSpace"
-            android:layout_width="129dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="400dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="sq_ft living space" />
-
-        <TextView
-            android:id="@+id/tvSearchHousePrice"
-            android:layout_width="306dp"
-            android:layout_height="58dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="46dp"
-            android:text="View maximum house price"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="@color/colorAccent" />
 
         <EditText
             android:id="@+id/noOfBathrooms"
@@ -582,19 +605,6 @@
             android:ems="10"
             android:inputType="numberDecimal" />
 
-        <EditText
-            android:id="@+id/sqFtAboveGround"
-            android:layout_width="169dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="175dp"
-            android:layout_marginLeft="168dp"
-            android:layout_marginTop="806dp"
-            android:ems="10"
-            android:inputType="number" />
-
         <Spinner
             android:id="@+id/spinnerWaterfront"
             android:layout_width="169dp"
@@ -607,31 +617,33 @@
             android:layout_marginTop="577dp"
             android:entries="@array/spinner_waterfront" />
 
-        <Button
-            android:id="@+id/buttonViewTax"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="11dp"
-            android:layout_marginLeft="11dp"
-            android:layout_marginTop="1450dp"
-            android:layout_marginBottom="1dp"
-            android:background="@drawable/rounded_corners_button"
-            android:text="View Property Tax on this house"
-            android:textColor="@color/common_google_signin_btn_text_dark_default" />
-
-        <TextView
-            android:id="@+id/propertyTax"
-            android:layout_width="wrap_content"
+            <TextView
+            android:id="@+id/tvSqFt_Living15"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="false"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="1520dp"
-            android:layout_marginBottom="1dp"
-            android:text="Your property tax will be.."
-            android:textSize="24sp" />
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="372dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Nearby House size sqft" />
+
+            <EditText
+            android:id="@+id/sqFtLiving15"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="174dp"
+            android:layout_marginLeft="174dp"
+            android:layout_marginTop="347dp"
+            android:ems="10"
+            android:inputType="number" />
+-->
     </RelativeLayout>
 
 </ScrollView>
