@@ -57,11 +57,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:enabled="false"
-                    android:focusable="false"
                     android:hint="First Name"
-                    android:inputType="none"
-                    android:text="first" />
+                    android:inputType="textPersonName" />
             </TableRow>
 
 
@@ -79,11 +76,9 @@
                     android:id="@+id/edittext_personal_surname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:enabled="false"
-                    android:focusable="false"
                     android:hint="Surname"
-                    android:inputType="none"
-                    android:text="last" />
+                    android:inputType="textPersonName" />
+
             </TableRow>
 
             <TableRow
@@ -103,7 +98,7 @@
                     android:enabled="false"
                     android:focusable="false"
                     android:hint="user@domain.com"
-                    android:inputType="none"
+                    android:inputType="text"
                     android:text="email" />
             </TableRow>
 

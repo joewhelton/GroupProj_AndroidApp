@@ -9,6 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -32,6 +37,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     private FirebaseAuth firebaseAuth;
 
+    private FirebaseUser user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +60,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         //getting current user
-        FirebaseUser user = firebaseAuth.getCurrentUser();
+        user = firebaseAuth.getCurrentUser();
 
         //initializing views
         textViewUserEmail = (TextView) findViewById(R.id.textViewUserEmail);
@@ -69,9 +76,18 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         mDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String firstName = snapshot.child("firstName").getValue().toString();
-                //displaying logged in user name
-                textViewUserEmail.setText("Welcome " + firstName);
+                 if (snapshot.hasChild("firstName")) {
+
+                    String firstName = snapshot.child("firstName").getValue().toString();
+                    //displaying logged in user name
+                    textViewUserEmail.setText("Welcome " + firstName);
+                } else {
+                     String displayName = user.getDisplayName();
+
+                     textViewUserEmail.setText("Welcome " + displayName);
+
+                 }
+
             }
 
             @Override
@@ -99,6 +115,25 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 // logout is pressed
                 //logging out the user
                 firebaseAuth.signOut();
+
+
+                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestIdToken(getString(R.string.default_web_client_id))
+                        .requestEmail()
+                        .build();
+
+                // Build a GoogleSignInClient with the options specified by gso.
+                GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+                // Google sign out
+                mGoogleSignInClient.signOut().addOnCompleteListener(this,
+                        new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+//                            updateUI(null);
+                            }
+                        });
+
                 //closing activity
                 finish();
                 //starting login activity
@@ -131,7 +166,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(new Intent(this, RatingActivity.class));
                 break;
         }
-        if(view == buttonCheckEligibility){
+        if (view == buttonCheckEligibility) {
             finish();
             //starting login activity
             startActivity(new Intent(this, LoanEligibilityActivity.class));
