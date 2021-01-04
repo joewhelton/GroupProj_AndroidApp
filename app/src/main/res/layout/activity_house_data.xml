@@ -217,8 +217,8 @@
             android:layout_marginLeft="11dp"
             android:layout_marginTop="650dp"
             android:layout_marginBottom="1dp"
-            android:text="Average error on this model:"
-            android:textSize="24sp" />
+            android:text="@string/mae_hse_price"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/buttonViewTax"

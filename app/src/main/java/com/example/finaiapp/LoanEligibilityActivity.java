@@ -211,6 +211,7 @@ public class LoanEligibilityActivity extends AppCompatActivity {
             }
         }
         amountf = Float.parseFloat(loanAmount);
+        amountf = (float) Math.log(amountf);
 
         loanTerm = et_loan_term.getText().toString().trim();
         //here I have assumed that all loan terms are 10 -30 years
@@ -273,8 +274,10 @@ public class LoanEligibilityActivity extends AppCompatActivity {
                 selfemployedf = 1;
 
             appIncomef = Float.parseFloat((et_personal_applicantincome.getText().toString()));
+            appIncomef = (float) Math.log(appIncomef);
 
             coappIncomef = Float.parseFloat((et_personal_coapplicantincome.getText().toString()));
+            coappIncomef = (float) Math.log(appIncomef);
 
             if ((et_personal_credithistory.getText().toString()).equalsIgnoreCase("Yes"))
                 historyf = 1;

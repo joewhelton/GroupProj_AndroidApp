@@ -138,10 +138,10 @@ public class HouseDataActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(inferredValue!=0.0f) {
-                    float taxRate = (float) 0.18;
-                    String tax = Float.toString(taxRate*inferredValue);
-                    String formatTax = String.format("%.02f", tax);
-                    propertyTax.setText(formatTax);
+                    float taxRate = (float) 0.00180;
+                    taxRate = taxRate*inferredValue;
+                    String formatTax = String.format("%.02f", taxRate);
+                    propertyTax.setText("$"+formatTax);
                 }
                 else Toast.makeText(HouseDataActivity.this, "Make a prediction first", Toast.LENGTH_LONG).show();
             }
@@ -209,7 +209,7 @@ public class HouseDataActivity extends AppCompatActivity {
         try {
             prediction = doInference(houseInputData);
             String formatPredict = String.format("%.02f", prediction);
-            predictPrice.setText(formatPredict);
+            predictPrice.setText("$"+formatPredict);
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(HouseDataActivity.this, "No price prediction", Toast.LENGTH_LONG).show();

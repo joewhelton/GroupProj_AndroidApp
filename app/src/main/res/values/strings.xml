@@ -7,6 +7,8 @@
     <string name="invalid_confirm_password">Password does not match</string>
     <string name="rating_ratingbar_msg">Please let us know how we\'re doing by rating our app below</string>
     <string name="rating_feedback_msg">If you have any further comments, please leave them here</string>
+    <string name="mae_hse_price">Mean Average Error $156,662</string>>
+
     <string-array name="spinner_waterfront">
         <item>"0"</item>
         <item>"1"</item>
@@ -69,10 +71,6 @@
         <item>"1.17447"</item>
         <item>"823.667747"</item>
         <item>"26868.801571"</item>
-    </string-array>
-
-    <string-array name="mae_hse_price_model">
-        <item>"152650"</item>
     </string-array>
 
 </resources>
