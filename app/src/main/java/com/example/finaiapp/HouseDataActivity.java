@@ -41,7 +41,7 @@ public class HouseDataActivity extends AppCompatActivity {
     //variable declarations
     private EditText bedroom, sqFtLivingSpace, sqFtLot, sqFtAboveGround, sqFtLot15;
     //private EditText saleYr, saleMonth, saleDay,bathroom, floor, sqFtBasement, yrBuilt, yrRenovated, zipCode, lati, longti, sqFtLiving15;
-    private Button buttonHousePrices, buttonPropertyTax, buttonBack;
+    private Button buttonHousePrices, buttonPropertyTax;
     private Spinner spinnerGrade;
     //private Spinner spinnerWaterfront, spinnerView, spinnerCondition;
     private FirebaseAuth firebaseAuth;
@@ -87,7 +87,6 @@ public class HouseDataActivity extends AppCompatActivity {
         spinnerGrade = (Spinner) findViewById(R.id.spinnerGrade);
         predictPrice = (TextView) findViewById(R.id.predictedPrice);
         propertyTax = (TextView) findViewById(R.id.propertyTax);
-        buttonBack = (Button) findViewById(R.id.buttonBack);
 
         //if the objects getcurrentuser method is null
         //means user is not logged in

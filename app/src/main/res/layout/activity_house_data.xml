@@ -246,18 +246,6 @@
             android:text="Your property tax will be.."
             android:textSize="24sp" />
 
-        <Button
-            android:id="@+id/buttonBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="11dp"
-            android:layout_marginLeft="11dp"
-            android:layout_marginTop="700dp"
-            android:layout_marginBottom="1dp"
-            android:background="@drawable/rounded_corners_button"
-            android:text="Back to main menu"
-            android:textColor="@color/common_google_signin_btn_text_dark_default" />
-
         <!--<EditText
             android:id="@+id/saleMonth"
             android:layout_width="169dp"
