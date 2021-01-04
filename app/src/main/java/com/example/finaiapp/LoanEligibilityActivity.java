@@ -384,4 +384,12 @@ public class LoanEligibilityActivity extends AppCompatActivity {
         saveDetails();
     }
 
+    @Override
+    public void onBackPressed() {
+
+        finish();
+        Intent intent = new Intent(LoanEligibilityActivity.this, ProfileActivity.class);
+        startActivity(intent);
+    }
+
 }

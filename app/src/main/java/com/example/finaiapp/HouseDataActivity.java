@@ -41,7 +41,7 @@ public class HouseDataActivity extends AppCompatActivity {
     //variable declarations
     private EditText bedroom, sqFtLivingSpace, sqFtLot, sqFtAboveGround, sqFtLot15;
     //private EditText saleYr, saleMonth, saleDay,bathroom, floor, sqFtBasement, yrBuilt, yrRenovated, zipCode, lati, longti, sqFtLiving15;
-    private Button buttonHousePrices, buttonPropertyTax;
+    private Button buttonHousePrices, buttonPropertyTax, buttonBack;
     private Spinner spinnerGrade;
     //private Spinner spinnerWaterfront, spinnerView, spinnerCondition;
     private FirebaseAuth firebaseAuth;
@@ -87,6 +87,7 @@ public class HouseDataActivity extends AppCompatActivity {
         spinnerGrade = (Spinner) findViewById(R.id.spinnerGrade);
         predictPrice = (TextView) findViewById(R.id.predictedPrice);
         propertyTax = (TextView) findViewById(R.id.propertyTax);
+        buttonBack = (Button) findViewById(R.id.buttonBack);
 
         //if the objects getcurrentuser method is null
         //means user is not logged in
@@ -146,6 +147,8 @@ public class HouseDataActivity extends AppCompatActivity {
                 else Toast.makeText(HouseDataActivity.this, "Make a prediction first", Toast.LENGTH_LONG).show();
             }
         });
+
+
     }
 
     //get user inputs and instantiate HousePrice class
@@ -260,5 +263,14 @@ public class HouseDataActivity extends AppCompatActivity {
                 Toast.makeText(HouseDataActivity.this, "Data saved", Toast.LENGTH_LONG).show();
             }
         });
+
+
+    }
+    @Override
+    public void onBackPressed() {
+
+        finish();
+        Intent intent = new Intent(HouseDataActivity.this, ProfileActivity.class);
+        startActivity(intent);
     }
 }
