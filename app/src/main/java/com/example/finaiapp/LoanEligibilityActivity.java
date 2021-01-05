@@ -147,7 +147,7 @@ public class LoanEligibilityActivity extends AppCompatActivity {
                             interpreter = new Interpreter(modelFile);
                         } else {
                             try {
-                                InputStream inputStream = getAssets().open("loan.tflite");
+                                InputStream inputStream = getAssets().open("loanModel.tflite");
                                 byte[] model = new byte[inputStream.available()];
                                 inputStream.read(model);
                                 ByteBuffer buffer = ByteBuffer.allocateDirect(model.length)
@@ -211,6 +211,7 @@ public class LoanEligibilityActivity extends AppCompatActivity {
             }
         }
         amountf = Float.parseFloat(loanAmount);
+        amountf = amountf/1000;
         amountf = (float) Math.log(amountf);
 
         loanTerm = et_loan_term.getText().toString().trim();
@@ -231,16 +232,10 @@ public class LoanEligibilityActivity extends AppCompatActivity {
         }
         while (loanTerm.isEmpty());
         //convert to months
-        termf = termf * 12;
-
-        // Gender = Male/Female/"" (empty string)
-        // Married = Yes/No/"" (empty string)
-        // Dependents = 0/1/2/3+
-        // Graduate = Graduate/NotGraduate
-        // SelfEmployed  Yes/No/""
-        // Applicant Income (number)
-        // Co-applicant income (number)
-        // Credit History "" (empty string)/1/0
+        if (termf<23){
+            termf=180;
+        }
+        else termf=360;
 
         //if any other data is missing it will redirect back to profile before querying the model
         try {
@@ -274,10 +269,14 @@ public class LoanEligibilityActivity extends AppCompatActivity {
                 selfemployedf = 1;
 
             appIncomef = Float.parseFloat((et_personal_applicantincome.getText().toString()));
+            appIncomef = appIncomef/12;
             appIncomef = (float) Math.log(appIncomef);
 
             coappIncomef = Float.parseFloat((et_personal_coapplicantincome.getText().toString()));
+            if(coappIncomef!=0){
+            coappIncomef = coappIncomef/12;
             coappIncomef = (float) Math.log(appIncomef);
+            }
 
             if ((et_personal_credithistory.getText().toString()).equalsIgnoreCase("Yes"))
                 historyf = 1;
@@ -302,8 +301,13 @@ public class LoanEligibilityActivity extends AppCompatActivity {
 
         //query the model with the input array
         try {
+            answer = -1;
             answer = doInference(loanData);
-            displans.setText(Float.toString(answer));
+            if ((answer>0)&&(answer<0.5)){
+                displans.setText("You don't qualify");
+            }
+            else displans.setText("You qualify! Hit apply now");
+
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(LoanEligibilityActivity.this, "No answer", Toast.LENGTH_LONG).show();
